@@ -31,6 +31,20 @@ public class Jump : StateNode<Player>
         else target.GravityControllHandler(target.FixedGravity * target.LowJumpMultiplier, delta);
         target.SnapControlHandler();
 
+        // 攻击
+        if(Input.IsActionJustPressed("attack"))
+        {
+            if(Input.GetActionStrength("ui_down") > 0.1)
+            {
+                _machine.Transition<DownAttack>();
+            }
+            else
+            {
+                _machine.Transition<Attack>();
+            }
+            return;
+        }
+
         // handle collisions
         foreach(var collision in target.Extend_GetCollison())
         {

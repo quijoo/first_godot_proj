@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource( 1 )
 Version = "1.0.0"
-CurrentSceneName = "Level1"
+CurrentSceneName = "Level3"
 SceneMap = {
 "scene_Level1_Manager_data": [  ],
 "scene_Level1_Player_data": [ {
-"PosX": 114.699,
+"PosX": 114.677,
 "PosY": 19.9242,
 "_sys_node_self_path": NodePath("/root/MainMap/Level1/PlayerPosition/Player")
 } ],
@@ -71,21 +71,21 @@ SceneMap = {
 "scene_Level2_Manager_data": [  ],
 "scene_Level2_Player_data": [ {
 "PosX": 348.576,
-"PosY": -115.92,
+"PosY": -118.293,
 "_sys_node_self_path": NodePath("/root/MainMap/Level2/PlayerPosition/Player")
 } ],
 "scene_Level2_SceneObject_data": [ {
-"PosX": 216.996,
+"PosX": 217.0,
 "PosY": -193.058,
 "V.y": 0.0,
 "_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes"),
 "state": 1
 }, {
 "PosX": 233.0,
-"PosY": -266.0,
+"PosY": -193.058,
 "V.y": 0.0,
 "_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes2"),
-"state": 0
+"state": 1
 }, {
 "PosX": 247.949,
 "PosY": -193.059,
@@ -99,17 +99,17 @@ SceneMap = {
 "_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes4"),
 "state": 2
 }, {
-"PosX": 376.0,
-"PosY": -310.955,
+"PosX": 375.988,
+"PosY": -310.956,
 "V.y": 75.0,
 "_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes5"),
 "state": 1
 }, {
 "PosX": 361.924,
-"PosY": -306.372,
-"V.y": 120.833,
+"PosY": -228.001,
+"V.y": 0.0,
 "_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes7"),
-"state": 1
+"state": 2
 }, {
 "PosX": 167.925,
 "PosY": -210.376,
@@ -119,8 +119,8 @@ SceneMap = {
 } ],
 "scene_Level3_Manager_data": [  ],
 "scene_Level3_Player_data": [ {
-"PosX": 158.481,
-"PosY": -7.89793,
+"PosX": 158.419,
+"PosY": -13.0865,
 "_sys_node_self_path": NodePath("/root/MainMap/Level3/PlayerPosition/Player")
 } ],
 "scene_Level3_SceneObject_data": [  ]
