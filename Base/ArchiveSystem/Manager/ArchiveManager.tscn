@@ -1,0 +1,32 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Base/ArchiveSystem/GameSave.cs" type="Script" id=1]
+[ext_resource path="res://Base/ArchiveSystem/Manager/ArchiveManager.cs" type="Script" id=2]
+[ext_resource path="res://Base/ArchiveSystem/ArchiveTreeNode/PlayerGroup.cs" type="Script" id=3]
+[ext_resource path="res://Base/ArchiveSystem/ArchiveTreeNode/ManagerGroup.cs" type="Script" id=4]
+[ext_resource path="res://Base/ArchiveSystem/ArchiveTreeNode/SceneObjectGroup.cs" type="Script" id=6]
+[ext_resource path="res://Base/ArchiveSystem/ArchiveTreeNode/GlobalGroup.cs" type="Script" id=8]
+[ext_resource path="res://Base/ArchiveSystem/ArchiveTreeNode/RootGroup.cs" type="Script" id=9]
+[ext_resource path="res://Base/ArchiveSystem/ArchiveTreeNode/SceneGroup.cs" type="Script" id=10]
+
+[node name="ArchiveManager" type="Node"]
+script = ExtResource( 2 )
+GameSave = ExtResource( 1 )
+
+[node name="Root" type="Node" parent="."]
+script = ExtResource( 9 )
+
+[node name="Scene" type="Node" parent="Root"]
+script = ExtResource( 10 )
+
+[node name="SceneObject" type="Node" parent="Root/Scene"]
+script = ExtResource( 6 )
+
+[node name="Global" type="Node" parent="Root"]
+script = ExtResource( 8 )
+
+[node name="Manager" type="Node" parent="Root/Global"]
+script = ExtResource( 4 )
+
+[node name="Player" type="Node" parent="Root/Global"]
+script = ExtResource( 3 )

@@ -1,0 +1,158 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://Scenes/Levels/Tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://Scenes/Tiles/TileMap.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Background/Background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Objects/Door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Enemy/Enemy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Objects/FallingSpikes.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Objects/SpikePit.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Objects/SpikeClubPosition.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Scenes/Objects/RigidBox.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Scenes/Objects/Switch.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Scenes/Objects/Ground.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Objects/StoneGate.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Effects/Trail.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Base/ArchiveSystem/SavePoint.tscn" type="PackedScene" id=31]
+[ext_resource path="res://Boss/Boss_1.tscn" type="PackedScene" id=32]
+[ext_resource path="res://Item/ItemSpawner.tscn" type="PackedScene" id=33]
+[ext_resource path="res://NPC/Npc.tscn" type="PackedScene" id=34]
+
+[sub_resource type="Shader" id=26]
+code = "shader_type canvas_item;
+uniform vec4 tint_color : hint_color = vec4(1.0);
+void fragment()
+{
+	vec4 color = texture(TEXTURE ,UV);
+	float grey = (color.r + color.g + color.b) / 3.0;
+	grey = smoothstep(0.3, 0.6, grey) * 0.4 + 0.6;
+	COLOR = vec4(grey * tint_color.rgb, color.a);
+}"
+
+[sub_resource type="ShaderMaterial" id=28]
+shader = SubResource( 26 )
+shader_param/tint_color = Color( 0.521569, 0.25098, 0.196078, 1 )
+
+[node name="Level1" type="Node2D"]
+position = Vector2( -306, -193 )
+
+[node name="SavePoints" type="Node2D" parent="."]
+
+[node name="SavePoint" parent="SavePoints" instance=ExtResource( 31 )]
+margin_left = -233.0
+margin_top = 103.0
+margin_right = -193.0
+margin_bottom = 143.0
+
+[node name="SavePoint4" parent="SavePoints" instance=ExtResource( 31 )]
+margin_left = -129.0
+margin_top = 24.0
+margin_right = -89.0
+margin_bottom = 64.0
+
+[node name="Trail" parent="." instance=ExtResource( 16 )]
+material = SubResource( 28 )
+position = Vector2( -66, 29 )
+
+[node name="PlayerPosition" type="Position2D" parent="."]
+position = Vector2( -350, 117 )
+
+[node name="ItemSpawner" parent="." instance=ExtResource( 33 )]
+position = Vector2( -109, -8 )
+
+[node name="Map" type="Node2D" parent="."]
+
+[node name="Background" parent="Map" instance=ExtResource( 3 )]
+visible = false
+margin_left = 2.0
+margin_top = 1.0
+margin_right = 322.0
+margin_bottom = 181.0
+
+[node name="TileMap" parent="Map" instance=ExtResource( 2 )]
+tile_set = ExtResource( 1 )
+collision_layer = 16
+collision_mask = 0
+tile_data = PoolIntArray( -131099, 0, 0, -131098, 0, 131076, -131097, 0, 131076, -131096, 0, 1, -131095, 0, 131076, -131094, 0, 131076, -131093, 0, 1, -131092, 0, 131076, -131091, 0, 131076, -131090, 0, 1, -131089, 0, 131076, -131088, 0, 131076, -131087, 0, 131076, -131086, 0, 131076, -131085, 0, 1, -131084, 0, 1, -131083, 0, 131076, -131082, 0, 131076, -131081, 0, 131076, -131080, 0, 1, -131079, 0, 1, -131078, 0, 1, -131077, 0, 131076, -131076, 0, 2, -65563, 0, 65541, -65562, 0, 3, -65561, 0, 131073, -65560, 0, 131073, -65559, 0, 131073, -65558, 0, 131073, -65557, 0, 131073, -65556, 0, 4, -65555, 0, 4, -65554, 0, 4, -65553, 0, 131073, -65552, 0, 4, -65551, 0, 131073, -65550, 0, 131073, -65549, 0, 4, -65548, 0, 4, -65547, 0, 131073, -65546, 0, 131073, -65545, 0, 4, -65544, 0, 4, -65543, 0, 4, -65542, 0, 4, -65541, 0, 5, -65540, 0, 65538, -27, 0, 65536, -26, 0, 65539, -5, 0, 65541, -4, 0, 65539, 65509, 0, 65541, 65510, 0, 65539, 65531, 0, 65536, 65532, 0, 65538, 131045, 0, 65541, 131046, 0, 65539, 131067, 0, 65536, 131068, 0, 65539, 196581, 0, 65536, 196582, 0, 131075, 196583, 0, 1, 196584, 0, 131076, 196585, 0, 1, 196586, 0, 1, 196587, 0, 2, 196603, 0, 65536, 196604, 0, 65539, 262117, 0, 65536, 262118, 0, 3, 262119, 0, 131073, 262120, 0, 4, 262121, 0, 4, 262122, 0, 131073, 262123, 0, 131074, 262139, 0, 65541, 262140, 0, 65539, 327653, 0, 65536, 327654, 0, 65538, 327662, 0, 0, 327663, 0, 1, 327664, 0, 2, 327670, 0, 0, 327671, 0, 1, 327672, 0, 1, 327673, 0, 1, 327674, 0, 131076, 327675, 0, 131077, 327676, 0, 65538, 393189, 0, 65536, 393190, 0, 65539, 393198, 0, 131072, 393199, 0, 131073, 393200, 0, 131074, 393206, 0, 131072, 393207, 0, 131073, 393208, 0, 131073, 393209, 0, 131073, 393210, 0, 131073, 393211, 0, 5, 393212, 0, 65539, 458725, 0, 65541, 458726, 0, 65538, 458747, 0, 65536, 458748, 0, 65539, 524261, 0, 65536, 524262, 0, 65539, 524283, 0, 65541, 524284, 0, 65538, 589797, 0, 65541, 589798, 0, 65539, 589819, 0, 65536, 589820, 0, 65539, 655333, 0, 65536, 655334, 0, 131075, 655335, 0, 1, 655336, 0, 131076, 655337, 0, 1, 655338, 0, 1, 655339, 0, 131076, 655340, 0, 131076, 655341, 0, 1, 655342, 0, 131076, 655343, 0, 131076, 655344, 0, 131076, 655345, 0, 1, 655346, 0, 1, 655347, 0, 131076, 655348, 0, 1, 655349, 0, 2, 655352, 0, 0, 655353, 0, 131076, 655354, 0, 1, 655355, 0, 131077, 655356, 0, 65539, 720869, 0, 65541, 720870, 0, 65537, 720871, 0, 65537, 720872, 0, 65537, 720873, 0, 65537, 720874, 0, 65537, 720875, 0, 65537, 720876, 0, 65537, 720877, 0, 65537, 720878, 0, 65537, 720879, 0, 65537, 720880, 0, 65537, 720881, 0, 65537, 720882, 0, 65537, 720883, 0, 65537, 720884, 0, 65537, 720885, 0, 131075, 720886, 0, 1, 720887, 0, 131076, 720888, 0, 131077, 720889, 0, 65537, 720890, 0, 65537, 720891, 0, 65537, 720892, 0, 65539, 786405, 0, 131072, 786406, 0, 4, 786407, 0, 131073, 786408, 0, 131073, 786409, 0, 131073, 786410, 0, 131073, 786411, 0, 4, 786412, 0, 131073, 786413, 0, 131073, 786414, 0, 4, 786415, 0, 131073, 786416, 0, 131073, 786417, 0, 131073, 786418, 0, 4, 786419, 0, 131073, 786420, 0, 4, 786421, 0, 131073, 786422, 0, 131073, 786423, 0, 131073, 786424, 0, 4, 786425, 0, 131073, 786426, 0, 4, 786427, 0, 4, 786428, 0, 131074 )
+
+[node name="Lights" type="Node2D" parent="Map"]
+
+[node name="SceneObjects" type="Node2D" parent="."]
+position = Vector2( 320, 318 )
+
+[node name="Spikes" type="Node2D" parent="SceneObjects"]
+
+[node name="SpikePit6" parent="SceneObjects/Spikes" instance=ExtResource( 10 )]
+position = Vector2( -473, -171 )
+
+[node name="SpikePit5" parent="SceneObjects/Spikes" instance=ExtResource( 10 )]
+position = Vector2( -455, -171 )
+
+[node name="SpikeClubPosition" parent="SceneObjects/Spikes" instance=ExtResource( 11 )]
+position = Vector2( -528, -335 )
+
+[node name="FallingSpike" type="Node2D" parent="SceneObjects/Spikes"]
+
+[node name="FallingSpikes8" parent="SceneObjects/Spikes/FallingSpike" instance=ExtResource( 9 )]
+position = Vector2( -652, -330 )
+
+[node name="FallingSpikes" parent="SceneObjects/Spikes/FallingSpike" instance=ExtResource( 9 )]
+position = Vector2( -457, -218 )
+
+[node name="FallingSpikes2" parent="SceneObjects/Spikes/FallingSpike" instance=ExtResource( 9 )]
+position = Vector2( -628, -331 )
+
+[node name="FallingSpikes3" parent="SceneObjects/Spikes/FallingSpike" instance=ExtResource( 9 )]
+position = Vector2( -586, -219 )
+
+[node name="FallingSpikes4" parent="SceneObjects/Spikes/FallingSpike" instance=ExtResource( 9 )]
+position = Vector2( -571, -219 )
+
+[node name="FallingSpikes5" parent="SceneObjects/Spikes/FallingSpike" instance=ExtResource( 9 )]
+position = Vector2( -454, -332 )
+
+[node name="FallingSpikes7" parent="SceneObjects/Spikes/FallingSpike" instance=ExtResource( 9 )]
+position = Vector2( -469, -332 )
+
+[node name="FallingSpikes6" parent="SceneObjects/Spikes/FallingSpike" instance=ExtResource( 9 )]
+position = Vector2( -601, -219 )
+
+[node name="FallingSpikes9" parent="SceneObjects/Spikes/FallingSpike" instance=ExtResource( 9 )]
+position = Vector2( -473, -218 )
+
+[node name="Npcs" type="Node2D" parent="SceneObjects"]
+
+[node name="Npc" parent="SceneObjects/Npcs" instance=ExtResource( 34 )]
+position = Vector2( -414, -272 )
+
+[node name="Monster" type="Node2D" parent="SceneObjects"]
+
+[node name="Enemy" parent="SceneObjects/Monster" instance=ExtResource( 8 )]
+position = Vector2( -593, -261 )
+
+[node name="Boss_1" parent="SceneObjects/Monster" instance=ExtResource( 32 )]
+position = Vector2( -675, -192 )
+
+[node name="Doors" type="Node2D" parent="SceneObjects"]
+
+[node name="Door" parent="SceneObjects/Doors" instance=ExtResource( 4 )]
+position = Vector2( -413, -186 )
+next_scene_name = "Level2"
+
+[node name="RigidBox" parent="SceneObjects/Doors" instance=ExtResource( 12 )]
+position = Vector2( -501, -176 )
+
+[node name="Switchs" type="Node2D" parent="SceneObjects"]
+
+[node name="Switch2" parent="SceneObjects/Switchs" instance=ExtResource( 13 )]
+position = Vector2( -696, -288 )
+
+[node name="GroundButton" parent="SceneObjects/Switchs" instance=ExtResource( 14 )]
+position = Vector2( -570, -255 )
+
+[node name="Objects" type="Node2D" parent="SceneObjects"]
+
+[node name="StoneGate" parent="SceneObjects/Objects" instance=ExtResource( 15 )]
+position = Vector2( -434, -175 )
+
+[connection signal="switch_changed" from="SceneObjects/Switchs/Switch2" to="SceneObjects/Objects/StoneGate" method="Switch"]

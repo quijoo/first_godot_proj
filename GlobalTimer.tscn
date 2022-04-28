@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="CSharpScript" id=1]
+
+[node name="GlobalTimer" type="Timer"]
+script = SubResource( 1 )
+
+[connection signal="timeout" from="." to="." method="callback"]

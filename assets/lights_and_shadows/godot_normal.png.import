@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/godot_normal.png-b75f66ce0cc9b49b971b304ccf182273.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/lights_and_shadows/godot_normal.png"
+dest_files=[ "res://.import/godot_normal.png-b75f66ce0cc9b49b971b304ccf182273.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

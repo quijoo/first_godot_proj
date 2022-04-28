@@ -1,0 +1,139 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://NPC/Npc.cs" type="Script" id=1]
+[ext_resource path="res://assets/itch/Blue_witch/B_witch_idle.png" type="Texture" id=2]
+[ext_resource path="res://NPC/NpcIdle.cs" type="Script" id=3]
+[ext_resource path="res://Base/StateMachine/StateMachine.cs" type="Script" id=4]
+[ext_resource path="res://assets/itch/GUI_4x.png" type="Texture" id=5]
+[ext_resource path="res://Base/Collision/UserDefineRayCast2D.tscn" type="PackedScene" id=13]
+
+[sub_resource type="RectangleShape2D" id=49]
+extents = Vector2( 11.5, 18.5 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "Idle"
+length = 1.2
+loop = true
+step = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 1, 1, 1, 1 ]
+}
+
+[sub_resource type="Animation" id=9]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 30 ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeStateMachine" id=46]
+states/Idle/node = SubResource( 15 )
+states/Idle/position = Vector2( 92, 213 )
+start_node = "Idle"
+graph_offset = Vector2( -47.4435, -325.577 )
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=47]
+
+[sub_resource type="RectangleShape2D" id=68]
+extents = Vector2( 11.5, 18.5 )
+
+[sub_resource type="AtlasTexture" id=69]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 385, 288, 35, 32 )
+
+[sub_resource type="SpriteFrames" id=70]
+animations = [ {
+"frames": [ SubResource( 69 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="Npc" type="KinematicBody2D"]
+collision_layer = 64
+collision_mask = 16
+script = ExtResource( 1 )
+RayCastScene = ExtResource( 13 )
+ProbeLength = 3.0
+json_file = "res://Resource/dialog.json"
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+vframes = 6
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.5, -0.5 )
+shape = SubResource( 49 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Idle"
+anims/Idle = SubResource( 6 )
+anims/RESET = SubResource( 9 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 46 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 47 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 4 )
+initial_state_path = NodePath("NpcIdle")
+
+[node name="NpcIdle" type="Node" parent="StateMachine"]
+script = ExtResource( 3 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 8 )
+emitting = false
+amount = 5
+lifetime = 0.4
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 4.69
+direction = Vector2( -1, -0.3 )
+spread = 32.31
+gravity = Vector2( 0, 10 )
+initial_velocity = 6.41
+
+[node name="AttackArea" type="Node2D" parent="."]
+
+[node name="Dialog" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dialog"]
+position = Vector2( -0.5, -0.5 )
+shape = SubResource( 68 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+position = Vector2( 12, -20 )
+scale = Vector2( 0.1, 0.1 )
+frames = SubResource( 70 )
+playing = true
+
+[connection signal="area_entered" from="Dialog" to="." method="_on_Dialog_area_entered"]
+[connection signal="area_exited" from="Dialog" to="." method="_on_Dialog_area_exited"]

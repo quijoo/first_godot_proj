@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Item/base/Item.cs" type="Script" id=2]
+[ext_resource path="res://Item/base/SceneItem.tscn" type="PackedScene" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+
+[node name="Item" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="UIItem" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="UIItem"]
+scale = Vector2( 0.16, 0.16 )
+texture = ExtResource( 4 )
+
+[node name="SceneItem" parent="." instance=ExtResource( 3 )]
+visible = false
+collision_layer = 32
+collision_mask = 16

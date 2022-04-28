@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/Objects/misc_sheet.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Objects/Door.cs" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 4, 8.5 )
+
+[node name="Door" type="Area2D"]
+collision_layer = 4
+collision_mask = 16
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+vframes = 12
+frame = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 3.5 )
+shape = SubResource( 1 )
+
+[connection signal="body_exited" from="." to="." method="_on_Door_body_exited"]

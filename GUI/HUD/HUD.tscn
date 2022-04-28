@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://GUI/HUD/HUD.cs" type="Script" id=1]
+[ext_resource path="res://GUI/HUD/HealthHUD.cs" type="Script" id=2]
+[ext_resource path="res://GUI/HUD/Heart.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Theme" id=1]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="HealthHUD" type="GridContainer" parent="."]
+margin_left = 4.0
+margin_top = 4.0
+margin_right = 40.0
+margin_bottom = 40.0
+theme = SubResource( 1 )
+custom_constants/vseparation = 8
+custom_constants/hseparation = 8
+columns = 10
+script = ExtResource( 2 )
+Heart = ExtResource( 3 )

@@ -1,0 +1,174 @@
+Date : 2022-04-15 06:50:49
+Directory : c:\Users\herrn\Desktop\Workspace\GodotProj
+Total : 101 files,  136201 codes, 824 comments, 5037 blanks, all 142062 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| XML        |          7 |    114,472 |          0 |        378 |    114,850 |
+| Ini        |          1 |     13,255 |        274 |      3,451 |     16,980 |
+| HTML       |          3 |      4,782 |         84 |        840 |      5,706 |
+| C#         |         83 |      3,134 |        466 |        365 |      3,965 |
+| JSON       |          4 |        549 |          0 |          0 |        549 |
+| Properties |          3 |          9 |          0 |          3 |         12 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                             | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                                |        101 |    136,201 |        824 |      5,037 |    142,062 |
+| .mono                                                                                                                            |         17 |    115,030 |         30 |        399 |    115,459 |
+| .mono\assemblies                                                                                                                 |          4 |    114,446 |          0 |        378 |    114,824 |
+| .mono\assemblies\Debug                                                                                                           |          2 |     57,224 |          0 |        189 |     57,413 |
+| .mono\assemblies\Release                                                                                                         |          2 |     57,222 |          0 |        189 |     57,411 |
+| .mono\temp                                                                                                                       |         13 |        584 |         30 |         21 |        635 |
+| .mono\temp\obj                                                                                                                   |         13 |        584 |         30 |         21 |        635 |
+| .mono\temp\obj\Debug                                                                                                             |          3 |         15 |         10 |          7 |         32 |
+| .mono\temp\obj\ExportDebug                                                                                                       |          3 |         15 |         10 |          7 |         32 |
+| .mono\temp\obj\ExportRelease                                                                                                     |          3 |         15 |         10 |          7 |         32 |
+| Base                                                                                                                             |         12 |        595 |         77 |         70 |        742 |
+| Base\Collision                                                                                                                   |          2 |        164 |         11 |          8 |        183 |
+| Base\Controller                                                                                                                  |          1 |        201 |         45 |         26 |        272 |
+| Base\SceneManager                                                                                                                |          1 |         47 |          3 |          7 |         57 |
+| Base\Sounds                                                                                                                      |          1 |         44 |          4 |          7 |         55 |
+| Base\StateMachine                                                                                                                |          4 |        106 |         10 |         19 |        135 |
+| Boss                                                                                                                             |          9 |        256 |         23 |         33 |        312 |
+| Boss\BossStates                                                                                                                  |          7 |        135 |          7 |         19 |        161 |
+| Camera                                                                                                                           |          1 |         72 |          3 |         10 |         85 |
+| DialogBox                                                                                                                        |          1 |         80 |          8 |          4 |         92 |
+| Enemy                                                                                                                            |          7 |        183 |         25 |         17 |        225 |
+| Enemy\base                                                                                                                       |          4 |         93 |         15 |          6 |        114 |
+| EventManager                                                                                                                     |          2 |        134 |         60 |          2 |        196 |
+| GUI                                                                                                                              |          7 |        274 |         42 |         30 |        346 |
+| GUI\HUD                                                                                                                          |          2 |         79 |          5 |          9 |         93 |
+| GUI\UI                                                                                                                           |          4 |        180 |         19 |         16 |        215 |
+| Helper                                                                                                                           |          4 |         96 |         10 |          9 |        115 |
+| Item                                                                                                                             |          3 |        258 |         15 |         18 |        291 |
+| Item\base                                                                                                                        |          3 |        258 |         15 |         18 |        291 |
+| NPC                                                                                                                              |          2 |         53 |          6 |          9 |         68 |
+| Player                                                                                                                           |         16 |        781 |         82 |         79 |        942 |
+| Player\State                                                                                                                     |         11 |        582 |         59 |         58 |        699 |
+| Player\base                                                                                                                      |          5 |        199 |         23 |         21 |        243 |
+| Resource                                                                                                                         |          1 |         11 |          0 |          0 |         11 |
+| Scenes                                                                                                                           |         10 |        265 |         78 |         51 |        394 |
+| Scenes\Levels                                                                                                                    |          2 |         23 |         18 |         11 |         52 |
+| Scenes\Objects                                                                                                                   |          8 |        242 |         60 |         40 |        342 |
+| Utils                                                                                                                            |          1 |          9 |          0 |          6 |         15 |
+| data_PlatformerDemo                                                                                                              |          4 |     18,037 |        358 |      4,291 |     22,686 |
+| data_PlatformerDemo\Mono                                                                                                         |          4 |     18,037 |        358 |      4,291 |     22,686 |
+| data_PlatformerDemo\Mono\etc                                                                                                     |          4 |     18,037 |        358 |      4,291 |     22,686 |
+| data_PlatformerDemo\Mono\etc\mono                                                                                                |          4 |     18,037 |        358 |      4,291 |     22,686 |
+| data_PlatformerDemo\Mono\etc\mono\2.0                                                                                            |          1 |      1,594 |         28 |        280 |      1,902 |
+| data_PlatformerDemo\Mono\etc\mono\4.0                                                                                            |          1 |      1,594 |         28 |        280 |      1,902 |
+| data_PlatformerDemo\Mono\etc\mono\4.5                                                                                            |          1 |      1,594 |         28 |        280 |      1,902 |
++----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                                         | language   | code       | comment    | blank      | total      |
++----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\assemblies\Debug\GodotSharp.xml                                                 | XML        |     55,311 |          0 |        164 |     55,475 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\assemblies\Debug\GodotSharpEditor.xml                                           | XML        |      1,913 |          0 |         25 |      1,938 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\assemblies\Release\GodotSharp.xml                                               | XML        |     55,309 |          0 |        164 |     55,473 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\assemblies\Release\GodotSharpEditor.xml                                         | XML        |      1,913 |          0 |         25 |      1,938 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\temp\obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs               | C#         |          3 |          1 |          1 |          5 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\temp\obj\Debug\PlatformerDemo.AssemblyInfo.cs                                   | C#         |          9 |          9 |          5 |         23 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\temp\obj\Debug\PlatformerDemo.GeneratedMSBuildEditorConfig.editorconfig         | Properties |          3 |          0 |          1 |          4 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\temp\obj\ExportDebug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs         | C#         |          3 |          1 |          1 |          5 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\temp\obj\ExportDebug\PlatformerDemo.AssemblyInfo.cs                             | C#         |          9 |          9 |          5 |         23 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\temp\obj\ExportDebug\PlatformerDemo.GeneratedMSBuildEditorConfig.editorconfig   | Properties |          3 |          0 |          1 |          4 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\temp\obj\ExportRelease\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs       | C#         |          3 |          1 |          1 |          5 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\temp\obj\ExportRelease\PlatformerDemo.AssemblyInfo.cs                           | C#         |          9 |          9 |          5 |         23 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\temp\obj\ExportRelease\PlatformerDemo.GeneratedMSBuildEditorConfig.editorconfig | Properties |          3 |          0 |          1 |          4 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\temp\obj\PlatformerDemo.csproj.nuget.dgspec.json                                | JSON       |         53 |          0 |          0 |         53 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\temp\obj\PlatformerDemo.csproj.nuget.g.props                                    | XML        |         15 |          0 |          0 |         15 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\temp\obj\PlatformerDemo.csproj.nuget.g.targets                                  | XML        |          6 |          0 |          0 |          6 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\.mono\temp\obj\project.assets.json                                                    | JSON       |        465 |          0 |          0 |        465 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Base\Collision\Collision.cs                                                           | C#         |        125 |         11 |          5 |        141 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Base\Collision\UserDefineRayCast2D.cs                                                 | C#         |         39 |          0 |          3 |         42 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Base\Controller\Controller.cs                                                         | C#         |        201 |         45 |         26 |        272 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Base\IElastic.cs                                                                      | C#         |          6 |          0 |          0 |          6 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Base\IHitable.cs                                                                      | C#         |          8 |          0 |          0 |          8 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Base\SceneManager\SceneManager.cs                                                     | C#         |         47 |          3 |          7 |         57 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Base\Sounds\SoundManager.cs                                                           | C#         |         44 |          4 |          7 |         55 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Base\StateMachine\IState.cs                                                           | C#         |         11 |          1 |          2 |         14 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Base\StateMachine\StateBase.cs                                                        | C#         |          6 |          1 |          2 |          9 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Base\StateMachine\StateMachine.cs                                                     | C#         |         59 |          2 |          9 |         70 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Base\StateMachine\StateNode.cs                                                        | C#         |         30 |          6 |          6 |         42 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Base\Warrior.cs                                                                       | C#         |         19 |          4 |          3 |         26 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Boss\BossStates\BossAttack_1.cs                                                       | C#         |         44 |          6 |          6 |         56 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Boss\BossStates\BossAttack_2.cs                                                       | C#         |         19 |          0 |          1 |         20 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Boss\BossStates\BossDeath.cs                                                          | C#         |          5 |          0 |          2 |          7 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Boss\BossStates\BossIdle.cs                                                           | C#         |         24 |          1 |          3 |         28 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Boss\BossStates\BossJump.cs                                                           | C#         |         19 |          0 |          2 |         21 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Boss\BossStates\BossRun.cs                                                            | C#         |         19 |          0 |          2 |         21 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Boss\BossStates\BossWalk.cs                                                           | C#         |          5 |          0 |          3 |          8 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Boss\Boss_1.cs                                                                        | C#         |         88 |          9 |         10 |        107 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Boss\FireBall.cs                                                                      | C#         |         33 |          7 |          4 |         44 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Camera\BasicFollowCamera.cs                                                           | C#         |         72 |          3 |         10 |         85 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\DialogBox\DialogBox.cs                                                                | C#         |         80 |          8 |          4 |         92 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Enemy\EnemyDeath.cs                                                                   | C#         |         21 |          1 |          4 |         26 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Enemy\EnemyIdle.cs                                                                    | C#         |         29 |          0 |          3 |         32 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Enemy\EnemyWalk.cs                                                                    | C#         |         40 |          9 |          4 |         53 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Enemy\base\Enemy.cs                                                                   | C#         |         28 |          5 |          1 |         34 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Enemy\base\EnemyApi.cs                                                                | C#         |         32 |          3 |          2 |         37 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Enemy\base\EnemyEvents.cs                                                             | C#         |         19 |          1 |          1 |         21 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Enemy\base\EnemySignal.cs                                                             | C#         |         14 |          6 |          2 |         22 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\EventManager\EventManager.cs                                                          | C#         |         43 |         29 |          1 |         73 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\EventManager\Events.cs                                                                | C#         |         91 |         31 |          1 |        123 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\GUI\HUD\HUD.cs                                                                        | C#         |         10 |          4 |          4 |         18 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\GUI\HUD\HealthHUD.cs                                                                  | C#         |         69 |          1 |          5 |         75 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\GUI\UIManager.cs                                                                      | C#         |         15 |         18 |          5 |         38 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\GUI\UI\Bag.cs                                                                         | C#         |          6 |          0 |          2 |          8 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\GUI\UI\Inventory.Layout.cs                                                            | C#         |        103 |          9 |          6 |        118 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\GUI\UI\Item.cs                                                                        | C#         |          6 |          0 |          4 |         10 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\GUI\UI\UIItemControl.cs                                                               | C#         |         65 |         10 |          4 |         79 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Helper\DirectionHelper.cs                                                             | C#         |         25 |          0 |          4 |         29 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Helper\KinematicCollision2DHelper.cs                                                  | C#         |         13 |          0 |          1 |         14 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Helper\ListHelper.cs                                                                  | C#         |         27 |          0 |          2 |         29 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Helper\RayCast2DHelper.cs                                                             | C#         |         31 |         10 |          2 |         43 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Item\base\Inventory.cs                                                                | C#         |        135 |          3 |          5 |        143 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Item\base\Item.cs                                                                     | C#         |         73 |          6 |          8 |         87 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Item\base\SceneItem.cs                                                                | C#         |         50 |          6 |          5 |         61 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Logger.cs                                                                             | C#         |         25 |          7 |          7 |         39 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\NPC\Npc.cs                                                                            | C#         |         31 |          6 |          4 |         41 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\NPC\NpcIdle.cs                                                                        | C#         |         22 |          0 |          5 |         27 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\PlatformerDemo.csproj                                                                 | XML        |          5 |          0 |          0 |          5 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\State\Attach.cs                                                                | C#         |         86 |          5 |          3 |         94 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\State\Attack.cs                                                                | C#         |         41 |          2 |          3 |         46 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\State\Dash.cs                                                                  | C#         |         51 |          7 |          2 |         60 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\State\Death.cs                                                                 | C#         |         16 |         10 |          9 |         35 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\State\DownAttack.cs                                                            | C#         |         43 |          1 |          4 |         48 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\State\Fall.cs                                                                  | C#         |         71 |          7 |          9 |         87 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\State\Idle.cs                                                                  | C#         |         75 |          4 |          6 |         85 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\State\Jump.cs                                                                  | C#         |         41 |          6 |          7 |         54 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\State\Push.cs                                                                  | C#         |         47 |          4 |          8 |         59 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\State\Walk.cs                                                                  | C#         |         68 |          5 |          3 |         76 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\State\WallJump.cs                                                              | C#         |         43 |          8 |          4 |         55 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\base\Player.cs                                                                 | C#         |         65 |         15 |          8 |         88 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\base\PlayerApi.cs                                                              | C#         |         77 |          5 |          3 |         85 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\base\PlayerEvents.cs                                                           | C#         |         11 |          2 |          4 |         17 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\base\PlayerPhysicsHandler.cs                                                   | C#         |         30 |          0 |          3 |         33 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Player\base\PlayerSignal.cs                                                           | C#         |         16 |          1 |          3 |         20 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Resource\dialog.json                                                                  | JSON       |         11 |          0 |          0 |         11 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Scenes\Levels\FollowLight.cs                                                          | C#         |         15 |          9 |          6 |         30 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Scenes\Levels\LevelTemplate.cs                                                        | C#         |          8 |          9 |          5 |         22 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Scenes\Objects\Door.cs                                                                | C#         |         21 |          2 |          5 |         28 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Scenes\Objects\FallingSpikes.cs                                                       | C#         |         50 |          3 |          6 |         59 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Scenes\Objects\Ground.cs                                                              | C#         |         50 |          7 |          9 |         66 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Scenes\Objects\RigidBox.cs                                                            | C#         |         16 |         12 |          5 |         33 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Scenes\Objects\SpikeClub.cs                                                           | C#         |         46 |          5 |          4 |         55 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Scenes\Objects\SpikePit.cs                                                            | C#         |         12 |          4 |          3 |         19 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Scenes\Objects\StoneGate.cs                                                           | C#         |         26 |          4 |          3 |         33 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Scenes\Objects\Switch.cs                                                              | C#         |         21 |         23 |          5 |         49 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\Utils\CMath.cs                                                                        | C#         |          9 |          0 |          6 |         15 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\data_PlatformerDemo\Mono\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx                   | HTML       |      1,594 |         28 |        280 |      1,902 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\data_PlatformerDemo\Mono\etc\mono\4.0\DefaultWsdlHelpGenerator.aspx                   | HTML       |      1,594 |         28 |        280 |      1,902 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\data_PlatformerDemo\Mono\etc\mono\4.5\DefaultWsdlHelpGenerator.aspx                   | HTML       |      1,594 |         28 |        280 |      1,902 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\data_PlatformerDemo\Mono\etc\mono\browscap.ini                                        | Ini        |     13,255 |        274 |      3,451 |     16,980 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\dialog.json                                                                           | JSON       |         20 |          0 |          0 |         20 |
+| c:\Users\herrn\Desktop\Workspace\GodotProj\item_spawn_test.cs                                                                    | C#         |         17 |          0 |          2 |         19 |
+| Total                                                                                                                            |            |    136,201 |        824 |      5,037 |    142,062 |
++----------------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+

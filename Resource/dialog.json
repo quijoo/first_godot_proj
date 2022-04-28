@@ -1,0 +1,11 @@
+{
+    "avator" : "res://assets/itch/Blue_witch/DialogAvator.png",
+    "background" : "res://assets/itch/dialog.png",
+    "dialog":[
+        "Who is the greatest water mage!",
+        "Its me!",
+        "nice!",
+        "1",
+        "2"
+    ]
+}

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Base/Collision/UserDefineRayCast2D.cs" type="Script" id=1]
+
+[node name="UserDefineRayCast2D" type="RayCast2D"]
+enabled = true
+cast_to = Vector2( 0, 0 )
+collision_mask = 22
+script = ExtResource( 1 )
