@@ -14,6 +14,7 @@ public class BossAttack_1 : StateNode<Boss_1>
 	public override void Enter()
 	{
 		target.animation_state.Travel("Attack");
+        target.SetAnimationState("Attack", 0);
         // TODO: 添加攻击特效
         // 1. 生成法术球（特效，碰撞，反馈）
         // 由动画的方法调用轨道调用

@@ -133,12 +133,9 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "Attack", 0 ],
-"method": "SetAnimationState"
-}, {
 "args": [ "Attack", 1 ],
 "method": "SetAnimationState"
 } ]
@@ -180,12 +177,9 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.8 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0.8 ),
+"transitions": PoolRealArray( 1 ),
 "values": [ {
-"args": [ "Attack_2", 0 ],
-"method": "SetAnimationState"
-}, {
 "args": [ "Attack_2", 1 ],
 "method": "SetAnimationState"
 } ]

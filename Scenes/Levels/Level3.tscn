@@ -179,6 +179,12 @@ position = Vector2( -66, 29 )
 [node name="PlayerPosition" type="Position2D" parent="."]
 position = Vector2( -173, -71 )
 
+[node name="SavePoint" parent="PlayerPosition" instance=ExtResource( 31 )]
+margin_left = -40.0
+margin_top = -18.0
+margin_right = 0.0
+margin_bottom = 22.0
+
 [node name="ItemSpawner" parent="." instance=ExtResource( 33 )]
 position = Vector2( -109, -8 )
 
