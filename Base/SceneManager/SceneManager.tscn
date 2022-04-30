@@ -13,7 +13,7 @@ _PackedSceneDictionary = {
 "Level2": ExtResource( 4 ),
 "Level3": ExtResource( 2 )
 }
-FirstSceneName = "Level1"
+FirstSceneName = "Level3"
 PlayerPacked = ExtResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

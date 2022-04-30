@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource( 1 )
 Version = "1.0.0"
-CurrentSceneName = "Level3"
+CurrentSceneName = "Level1"
 SceneMap = {
 "scene_Level1_Manager_data": [  ],
 "scene_Level1_Player_data": [ {
-"PosX": 114.677,
+"PosX": 114.764,
 "PosY": 19.9242,
 "_sys_node_self_path": NodePath("/root/MainMap/Level1/PlayerPosition/Player")
 } ],
@@ -71,7 +71,7 @@ SceneMap = {
 "scene_Level2_Manager_data": [  ],
 "scene_Level2_Player_data": [ {
 "PosX": 348.576,
-"PosY": -118.293,
+"PosY": -121.263,
 "_sys_node_self_path": NodePath("/root/MainMap/Level2/PlayerPosition/Player")
 } ],
 "scene_Level2_SceneObject_data": [ {
@@ -87,7 +87,7 @@ SceneMap = {
 "_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes2"),
 "state": 1
 }, {
-"PosX": 247.949,
+"PosX": 247.968,
 "PosY": -193.059,
 "V.y": 0.0,
 "_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes3"),
@@ -99,28 +99,28 @@ SceneMap = {
 "_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes4"),
 "state": 2
 }, {
-"PosX": 375.988,
-"PosY": -310.956,
-"V.y": 75.0,
-"_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes5"),
-"state": 1
-}, {
-"PosX": 361.924,
-"PosY": -228.001,
+"PosX": 376.076,
+"PosY": -276.004,
 "V.y": 0.0,
-"_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes7"),
+"_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes5"),
 "state": 2
 }, {
+"PosX": 362.0,
+"PosY": -306.372,
+"V.y": 120.833,
+"_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes7"),
+"state": 1
+}, {
 "PosX": 167.925,
-"PosY": -210.376,
-"V.y": 279.167,
+"PosY": -211.514,
+"V.y": 95.8333,
 "_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes6"),
 "state": 2
 } ],
 "scene_Level3_Manager_data": [  ],
 "scene_Level3_Player_data": [ {
-"PosX": 158.419,
-"PosY": -13.0865,
+"PosX": 158.497,
+"PosY": -35.6704,
 "_sys_node_self_path": NodePath("/root/MainMap/Level3/PlayerPosition/Player")
 } ],
 "scene_Level3_SceneObject_data": [  ]
