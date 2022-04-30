@@ -335,7 +335,7 @@ shape = SubResource( 2 )
 position = Vector2( -7, 0 )
 frames = SubResource( 63 )
 animation = "Fireball"
-frame = 55
+frame = 15
 playing = true
 
 [node name="HurtEffect" type="Node" parent="."]

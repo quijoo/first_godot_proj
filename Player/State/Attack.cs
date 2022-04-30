@@ -35,6 +35,7 @@ public class Attack : StateNode<Player>
 #region HandleCollision
     private void _on_Area2D_body_entered(Node body)
     {
+        // 发起攻击
         if(body is IHitable)
         {
             IHitable hitable = body as IHitable;

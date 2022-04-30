@@ -1,12 +1,13 @@
 using Godot;
+using Godot.Collections;
 using System;
 using Events;
-public class Boss_1 : Warrior, IHitable, IAttacker
+public partial class Boss_1 : Warrior, IHitable, IAttacker, IElastic
 {
     // IAttacker
     [Export] private float _Damage;
     public float Damage { get => _Damage;}
-	public AnimatedSprite sprite;
+	public Sprite sprite;
 	// 当玩家进入 boss 领地，boss锁定玩家
 	[Export] public Area2D Land;
 	private Player target;
@@ -14,6 +15,15 @@ public class Boss_1 : Warrior, IHitable, IAttacker
 	// 状态机对象（这里循环引用了）
 	private StateMachine _machine;
 	private Console _wrapper;
+    public Array<RayCast2D> NavigationRay = new Array<RayCast2D>();
+    // IElastic
+    [Export] Vector2 _ReboundSpeed = Vector2.Up * 300;
+    public Vector2 ReboundSpeed { get=>_ReboundSpeed; }
+
+    public Vector2 Rebound(Vector2 collision, Vector2 collided)
+    {
+        return _ReboundSpeed;
+    }
 
 	public override void _Ready()
 	{
@@ -26,6 +36,16 @@ public class Boss_1 : Warrior, IHitable, IAttacker
 				.SetDescription("let boss use enter attack_%index% attack")
 				.AddArgument("index", Variant.Type.Int)
 				.Register();
+
+        _wrapper.AddCommand("boss_dash", this, nameof(Dash))
+				.SetDescription("let boss dash between few points")
+				.Register();
+
+        sprite = GetNode<Sprite>("Sprite");
+        foreach(RayCast2D ray in GetNode<Node>("Navigation/Ray").GetChildren())
+        {
+            NavigationRay.Add(ray);
+        }
 	}
 	
 	public override void UpdateDirection()
@@ -40,54 +60,6 @@ public class Boss_1 : Warrior, IHitable, IAttacker
 		}
 	}
 
-#region BossApi
-	// 强制转换 boss 状态, 由 boss 控制器（行为树或者普通状态机）调用
-	public void Idle()
-	{
-		_machine.Transition<BossIdle>();
-	}
-	public void Run()
-	{
-		_machine.Transition<BossRun>();
-	}
-	public void TurnLeft()
-	{
-		direction = Direction.LEFT;
-		UpdateDirection();
-	}
-	public void TurnRight()
-	{
-		direction = Direction.RIGHT;
-		UpdateDirection();
-	}
-	public void Attack(int index)
-	{
-        if(index == 1)
-		    _machine.Transition<BossAttack_1>();
-        else if(index == 2)
-	    	_machine.Transition<BossAttack_2>();
-	}
-	public void Jump()
-	{
-		_machine.Transition<BossJump>();
-	}
-	public void Death()
-	{
-		_machine.Transition<BossDeath>();
-	}
-	public void Walk()
-	{
-		_machine.Transition<BossWalk>();
-	}
-    public override void RigisterEvents()
-    {
-        
-    }
-    public override void UnrigisterEvents()
-    {
-        
-    }
-#endregion
 	private void _on_Land_body_entered(Node body)
 	{
 		// Replace with function body.
@@ -97,10 +69,17 @@ public class Boss_1 : Warrior, IHitable, IAttacker
 		IsLockPlayer = true;
 	}
 
+    private void _on_Hitbox_body_entered(Node body)
+    {
+        if(body is IHitable)
+        {
+            (body as IHitable).OnHit(this, "touch boss");
+        }
+    }
     public void OnHit(IAttacker attacker, string info)
     {
         Health -= attacker.Damage;
-        GD.Print("Boss dead");
+        _machine.Transition<BossHit>();
         // TOOD: boss Dead
         // 1. Event trigger
         // 2. Achievement

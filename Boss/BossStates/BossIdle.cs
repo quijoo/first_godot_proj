@@ -5,6 +5,7 @@ public class BossIdle : StateNode<Boss_1>
 {
 	public override void Enter()
 	{
+        target.velocity = Vector2.Zero;
 		target.animation_state.Travel("Idle");        
 	}
 	public override void Exit()
