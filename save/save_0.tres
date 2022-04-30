@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource( 1 )
 Version = "1.0.0"
-CurrentSceneName = "Level1"
+CurrentSceneName = "Level3"
 SceneMap = {
 "scene_Level1_Manager_data": [  ],
 "scene_Level1_Player_data": [ {
@@ -119,8 +119,8 @@ SceneMap = {
 } ],
 "scene_Level3_Manager_data": [  ],
 "scene_Level3_Player_data": [ {
-"PosX": 158.497,
-"PosY": -35.6704,
+"PosX": -43.6396,
+"PosY": 168.271,
 "_sys_node_self_path": NodePath("/root/MainMap/Level3/PlayerPosition/Player")
 } ],
 "scene_Level3_SceneObject_data": [  ]

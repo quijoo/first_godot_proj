@@ -13,11 +13,19 @@ public class Boss_1 : Warrior, IHitable, IAttacker
 	private bool IsLockPlayer = false;
 	// 状态机对象（这里循环引用了）
 	private StateMachine _machine;
+	private Console _wrapper;
+
 	public override void _Ready()
 	{
 		base._Ready();
 		_machine = GetNode<StateMachine>("StateMachine");
 		Land = GetNodeOrNull<Area2D>("Land");
+
+        _wrapper = GetTree().Root.GetNode<Console>("CSharpConsole");        
+		_wrapper.AddCommand("boss_attack", this, nameof(Attack))
+				.SetDescription("let boss use enter attack_%index% attack")
+				.AddArgument("index", Variant.Type.Int)
+				.Register();
 	}
 	
 	public override void UpdateDirection()
@@ -52,13 +60,12 @@ public class Boss_1 : Warrior, IHitable, IAttacker
 		direction = Direction.RIGHT;
 		UpdateDirection();
 	}
-	public void Attack_1()
+	public void Attack(int index)
 	{
-		_machine.Transition<BossAttack_1>();
-	}
-	public void Attack_2()
-	{
-		_machine.Transition<BossAttack_2>();
+        if(index == 1)
+		    _machine.Transition<BossAttack_1>();
+        else if(index == 2)
+	    	_machine.Transition<BossAttack_2>();
 	}
 	public void Jump()
 	{

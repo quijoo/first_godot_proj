@@ -28,6 +28,11 @@ namespace Archive
 
                 root.LoadHandler(root.GetPathTo(node));
             }
+            if(!NodeMap.ContainsKey(name))
+            {
+                GetTree().Root.GetNode<CanvasLayer>("Console").Call("write_line", $"[color=<red>]error[/color] archive node name {name}");
+                return;
+            }
             dfs(NodeMap[name], (Node node)=>{}, leaf_process, (Node node)=>{});           
         }
     }

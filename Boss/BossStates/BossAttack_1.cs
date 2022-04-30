@@ -23,7 +23,7 @@ public class BossAttack_1 : StateNode<Boss_1>
 	}
 	public override void _PhysicsUpdate(float delta)
 	{
-        if(Input.IsActionJustPressed("test") && target.GetAnimationState("Attack") == (int)AnimationState.Stop)
+        if(target.GetAnimationState("Attack") == (int)AnimationState.Stop)
 		{
 			target.Idle();
 		}

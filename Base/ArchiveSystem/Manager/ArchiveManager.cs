@@ -21,6 +21,7 @@ namespace Archive
         static private ArchiveManager instance = null;
         static private Dictionary<string, ArchiveTreeNode> NodeMap = new Dictionary<string, ArchiveTreeNode>();
         public delegate void NodeProcess(Node node);
+        private Console _wrapper;   
         public override async void _Ready()
         {
             await ToSignal(GetTree().CurrentScene, "ready");
@@ -34,6 +35,13 @@ namespace Archive
                 }
             }
             dfs(GetNode<ArchiveTreeNode>("Root"), process, (Node node) => {}, (Node node) => {});
+
+            _wrapper = GetTree().Root.GetNode<Console>("CSharpConsole");        
+            _wrapper.AddCommand("load", this, nameof(LoadGame))
+                    .SetDescription("load game from archive node %name%, id %id%")
+				.AddArgument("id", Variant.Type.Int)
+				.AddArgument("name", Variant.Type.String)
+				.Register();
         }
         private void dfs(Node node, NodeProcess pre_process, NodeProcess leaf_process, NodeProcess post_process)
         {
@@ -48,15 +56,6 @@ namespace Archive
                 dfs(child, pre_process, leaf_process, post_process);
             }
             post_process(node);
-        }
-        public override void _PhysicsProcess(float delta)
-        {
-            base._PhysicsProcess(delta);
-            // Just for test
-            if(Input.IsActionJustPressed("test"))
-            {
-                LoadGame(0, "Root");
-            }
         }
     }
 }
