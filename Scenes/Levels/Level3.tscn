@@ -183,7 +183,7 @@ margin_right = -173.0
 margin_bottom = -49.0
 
 [node name="PlayerPosition" type="Position2D" parent="."]
-position = Vector2( -173, -71 )
+position = Vector2( -158, -65 )
 
 [node name="ItemSpawner" parent="." instance=ExtResource( 33 )]
 position = Vector2( -109, -8 )

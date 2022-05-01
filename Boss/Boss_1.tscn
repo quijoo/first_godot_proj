@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=61 format=2]
 
 [ext_resource path="res://Boss/base/Boss_1.cs" type="Script" id=1]
 [ext_resource path="res://assets/itch/evil_wizard_merge.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Resource/Player.gdshader" type="Shader" id=4]
 [ext_resource path="res://Boss/BossStates/BossHit.cs" type="Script" id=5]
 [ext_resource path="res://Boss/BossStates/BossDash.cs" type="Script" id=6]
+[ext_resource path="res://Weapons/FireballWeapon.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Base/StateMachine/StateMachine.cs" type="Script" id=10]
 [ext_resource path="res://boss/BossStates/BossIdle.cs" type="Script" id=11]
 [ext_resource path="res://Base/Collision/UserDefineRayCast2D.tscn" type="PackedScene" id=12]
@@ -361,7 +362,7 @@ tracks/0/keys = {
 extents = Vector2( 10, 17.75 )
 
 [sub_resource type="RectangleShape2D" id=53]
-extents = Vector2( 148, 85 )
+extents = Vector2( 270.25, 230.688 )
 
 [node name="Boss_1" type="KinematicBody2D"]
 collision_layer = 2
@@ -377,6 +378,12 @@ texture = ExtResource( 2 )
 hframes = 8
 vframes = 8
 frame = 49
+
+[node name="FireballWeapon" parent="Sprite" instance=ExtResource( 7 )]
+position = Vector2( 28.3333, 13.3333 )
+scale = Vector2( 1.66667, 1.66667 )
+Bullet = ExtResource( 3 )
+Speed = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 1.5, 0 )
@@ -439,22 +446,6 @@ script = ExtResource( 5 )
 [node name="BossDash" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
 
-[node name="Land" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Land"]
-visible = false
-position = Vector2( 0, -68 )
-shape = SubResource( 53 )
-
-[node name="FireballPosition_1" type="Position2D" parent="."]
-position = Vector2( 51, -51 )
-
-[node name="FireballPosition_2" type="Position2D" parent="."]
-position = Vector2( 64, -26 )
-
-[node name="FireballPosition_3" type="Position2D" parent="."]
-position = Vector2( 82, 0 )
-
 [node name="Navigation" type="Node2D" parent="."]
 
 [node name="Ray" type="Node2D" parent="Navigation"]
@@ -483,5 +474,12 @@ enabled = true
 cast_to = Vector2( 0, 1000 )
 collision_mask = 16
 
+[node name="Land" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Land"]
+position = Vector2( -2, -214.688 )
+shape = SubResource( 53 )
+
 [connection signal="body_entered" from="HitboxPosition/Hitbox" to="." method="_on_Hitbox_body_entered"]
 [connection signal="body_entered" from="Land" to="." method="_on_Land_body_entered"]
+[connection signal="body_exited" from="Land" to="." method="_on_Land_body_exited"]

@@ -34,21 +34,12 @@ public class BossAttack_1 : StateNode<Boss_1>
 
     public void SpawnFireball()
     {
-        Node b1 = fire_ball.Instance();
-        Node b2 = fire_ball.Instance();
-        Node b3 = fire_ball.Instance();
-        
-        Vector2 p1 = target.GetNode<Position2D>("FireballPosition_1").Position;
-        Vector2 p2 = target.GetNode<Position2D>("FireballPosition_2").Position;
-        Vector2 p3 = target.GetNode<Position2D>("FireballPosition_3").Position;
-
-        target.GetParent().AddChild(b1);
-        target.GetParent().AddChild(b2);
-        target.GetParent().AddChild(b3);
-
-        ((FireBall)b1).Position = ((Node2D)(target.GetParent())).ToLocal(target.ToGlobal(p1));
-        ((FireBall)b2).Position = ((Node2D)(target.GetParent())).ToLocal(target.ToGlobal(p2));
-        ((FireBall)b3).Position = ((Node2D)(target.GetParent())).ToLocal(target.ToGlobal(p3));
+        if(target.Target == null)
+        {
+            GD.Print("No target");
+            return;
+        }
+        target.weapon.Fire(target.Target, 0.4f);
     }
 #region HandleCollision
 	

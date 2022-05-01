@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://assets/itch/FXpack13/Effect3/fire_ball.png" type="Texture" id=1]
 [ext_resource path="res://Boss/FireBall.cs" type="Script" id=2]
@@ -8,6 +8,27 @@ radius = 7.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 8.0
+
+[sub_resource type="Shader" id=64]
+code = "shader_type canvas_item;
+uniform vec4 emission : hint_color;
+void fragment()
+{
+	vec4 current_color = texture(TEXTURE, UV);
+	if(current_color.a > 0f )
+	{
+		float grey = (current_color.r + current_color.g + current_color.b) / 3.0;
+		COLOR = vec4(grey, grey, grey, current_color.a)+ emission;
+	}
+	else
+	{
+		COLOR = current_color;
+	}	
+}"
+
+[sub_resource type="ShaderMaterial" id=65]
+shader = SubResource( 64 )
+shader_param/emission = Color( 0.266667, 0.0470588, 0.247059, 0.0627451 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
@@ -317,11 +338,15 @@ animations = [ {
 "speed": 60.0
 } ]
 
+[sub_resource type="Environment" id=66]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 0
+
 [node name="FireBall" type="KinematicBody2D"]
 collision_layer = 10
 collision_mask = 16
 script = ExtResource( 2 )
-velocity = Vector2( 50, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -332,6 +357,7 @@ shape = SubResource( 1 )
 shape = SubResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 65 )
 position = Vector2( -7, 0 )
 frames = SubResource( 63 )
 animation = "Fireball"
@@ -341,3 +367,6 @@ playing = true
 [node name="HurtEffect" type="Node" parent="."]
 
 [node name="ReboundEffect" type="Node" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 66 )

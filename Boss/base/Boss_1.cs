@@ -9,9 +9,8 @@ public partial class Boss_1 : Warrior, IHitable, IAttacker, IElastic
     public float Damage { get => _Damage;}
 	public Sprite sprite;
 	// 当玩家进入 boss 领地，boss锁定玩家
-	[Export] public Area2D Land;
+	public Area2D Land;
 	private Player target;
-	private bool IsLockPlayer = false;
 	// 状态机对象（这里循环引用了）
 	private StateMachine _machine;
 	private Console _wrapper;
@@ -24,6 +23,8 @@ public partial class Boss_1 : Warrior, IHitable, IAttacker, IElastic
     {
         return _ReboundSpeed;
     }
+    // Weapon
+    public FireballWeapon weapon;
 
 	public override void _Ready()
 	{
@@ -46,6 +47,8 @@ public partial class Boss_1 : Warrior, IHitable, IAttacker, IElastic
         {
             NavigationRay.Add(ray);
         }
+        // 暂时放到sprite下
+        weapon = GetNode<FireballWeapon>("Sprite/FireballWeapon");
 	}
 	
 	public override void UpdateDirection()
@@ -64,10 +67,18 @@ public partial class Boss_1 : Warrior, IHitable, IAttacker, IElastic
 	{
 		// Replace with function body.
 		if(!(body is Player)) return;
-		GD.Print("Player Enter Boss's Body.");
+		GD.Print("Player Enter Boss's Land.");
 		target = body as Player;
-		IsLockPlayer = true;
+        LookAt(target);
 	}
+    private void _on_Land_body_exited(Node body)
+    {
+        if(Target == body)
+        {
+    		GD.Print("Target Exit Boss's Land.");
+            Ignore();
+        }
+    }
 
     private void _on_Hitbox_body_entered(Node body)
     {

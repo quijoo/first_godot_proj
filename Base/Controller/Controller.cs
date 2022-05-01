@@ -58,6 +58,8 @@ public abstract class Controller : KinematicBody2D
 	
 	// AnimationTree relate.
 	private Dictionary<string, int> AnimationStateDict = new Dictionary<string, int>();
+    // Aim relate
+    public Controller Target = null;
 	public enum AnimationState : int
 	{
 		Error = -1,
@@ -228,6 +230,20 @@ public abstract class Controller : KinematicBody2D
         }
     }
     public abstract void UpdateDirection();
+    // 锁定目标相关
+    public void LookAt(Controller target)
+    {
+        // TODO：调整面向
+        Target = target;
+    }
+    public void Ignore()
+    {
+        Target = null;
+    }
+    public bool IsLockTarget()
+    {
+        return Target != null;
+    }
 #endregion
 
 #region Physics_Handler_func
