@@ -1,7 +1,7 @@
 using Godot;
 using System;
 using System.Collections;
-public class StoneGate : StaticBody2D
+public class StoneGate : StaticBody2D, IGate
 {
     AnimatedSprite anim;
     CollisionShape2D collision;

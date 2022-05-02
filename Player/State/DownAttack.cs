@@ -18,7 +18,8 @@ public class DownAttack : StateNode<Player>
     }
     public override void Exit()
     {
-
+        // 如果在其他地方切换状态，需要关闭碰撞区域
+        target.DisableDownArea();
     }
     public override void _PhysicsUpdate(float delta)
     {

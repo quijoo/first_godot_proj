@@ -19,7 +19,6 @@ public class Hit : StateNode<Player>
     }
     public override void Exit()
     {
-
     }
     public override void _PhysicsUpdate(float delta)
     {

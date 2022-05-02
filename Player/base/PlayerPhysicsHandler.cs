@@ -23,10 +23,12 @@ public partial class Player
         if(direction == Direction.RIGHT)
         {
             velocity.x = dash_speed;
+			sprite.FlipH = false;
         }
         if(direction == Direction.LEFT)
         {
             velocity.x = -dash_speed;
+			sprite.FlipH = true;
         }
     }
     public void LockVerticalMovement()

@@ -10,7 +10,7 @@ public class BossDash : StateNode<Boss_1>
     }
     private List<Vector2> positions = new List<Vector2>();
     private int index = 0;
-    private float speed = 300f;
+    private float speed = 150f;
     public override void Enter()
     {
         // 开启动画
@@ -32,14 +32,24 @@ public class BossDash : StateNode<Boss_1>
     {
 
     }
+    private float time = 3f;
     public override void _PhysicsUpdate(float delta)
     {
+        if(time > 0f)
+        {
+            time -= delta;
+            return;
+        }
         target.MoveTo(positions[index], 5000f);
-        if(positions[index].DistanceTo(target.Position) < 18f)
+        if(positions[index].DistanceTo(target.Position) < 30f)
         {
             if(index + 1 < positions.Count)
             {
                 index += 1;
+                // 开启定时器
+                time = 1f;
+                target.UpdateDirection();
+                target.weapon.Fire(target.Target, 10f);
             }
             else
             {

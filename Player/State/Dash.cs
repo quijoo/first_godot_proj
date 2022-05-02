@@ -9,6 +9,12 @@ public class Dash : StateNode<Player>
         Running    = 0,
         Stop = 1,
     }
+    [Export(PropertyHint.Layers2dPhysics)] public uint DashLayer;
+    [Export(PropertyHint.Layers2dPhysics)] public uint DashMask;
+
+    private uint temp_layer;
+    private uint temp_mask;
+ 
     public override void Enter()
     {
         target.num_dash -= 1;
@@ -26,10 +32,22 @@ public class Dash : StateNode<Player>
         //          第一个物理帧检测到 Dash == 1， 就直接切换状态 Idle， 事实上是动画还未执行
         target.SetAnimationState("Dash", (int)AnimationState.Running);
         target.animation_state.Travel("Dash");
+        // 关闭物理碰撞(如果这样关闭，会掉出地图边界，应该修改mask)
+        // target.collision_shape.SetDeferred("disabled", true);
+        temp_layer = target.CollisionLayer;
+        target.CollisionLayer = DashLayer;
+
+        temp_mask = target.CollisionMask;
+        target.CollisionMask = DashMask;
+
         // SoundManager.dash_sound.Play();
     }
     public override void Exit()
     {
+        // target.collision_shape.SetDeferred("disabled", false);
+        target.CollisionLayer = temp_layer;
+        target.CollisionMask = temp_mask;
+
     }
     public override void _PhysicsUpdate(float delta)
     {

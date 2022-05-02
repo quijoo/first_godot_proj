@@ -5,7 +5,7 @@ public class Switch : Area2D
 {
     // signal define
     // [Signal] public delegate void switch_changed(int id);
-    [Signal] public delegate void switch_changed(); 
+    [Export] public NodePath gate;
     // animation cache
     AnimatedSprite anim;
     // switch control
@@ -40,9 +40,7 @@ public class Switch : Area2D
             anim.Play(is_switch_open ? "Close" : "Open");
             is_switch_open = !is_switch_open;
             // 优化为函数调用列表
-            // GetNode<StoneGate>("StoneGate").Switch();
-            // EmitSignal("switch_changed", switch_id);
-            EmitSignal("switch_changed");
+            GetNode<IGate>(gate).Switch();
         }
     }
 }

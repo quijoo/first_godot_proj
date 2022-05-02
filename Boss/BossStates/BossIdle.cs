@@ -17,6 +17,7 @@ public class BossIdle : StateNode<Boss_1>
 	{
 		target.GravityControllHandler(10, delta);
 		target.SnapControlHandler();
+        target.UpdateDirection();
 	}
 #region HandleCollision
 	

@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public class FireBall : KinematicBody2D, IElastic, IHitable
+public class FireBall : KinematicBody2D, IElastic, IHitable, IAttacker
 {
     private Area2D hurt_area;
     private AnimatedSprite sprite;
@@ -18,12 +18,15 @@ public class FireBall : KinematicBody2D, IElastic, IHitable
         return _ReboundSpeed;
     }
     // 击中特效
-    public int HitCounter;
+    Color player_color = Color.ColorN("red");
+    Color enemy_color = Color.ColorN("green");
+    Vector2 DefaultVelocity = Vector2.Right;
+
+    public float Damage { private set; get; } = 10f;
     public override void _Ready()
     {
         hurt_area = GetNode<Area2D>(nameof(Area2D));
         sprite = GetNode<AnimatedSprite>(nameof(AnimatedSprite));
-        HitCounter = 0;
     }
     
     public void Init(Node2D target, Node2D weapon, float speed)
@@ -38,17 +41,14 @@ public class FireBall : KinematicBody2D, IElastic, IHitable
     {
         foreach(var collision in this.Extend_GetCollison())
         {
-            if(collision.Collider is Player)
-            {
-                // process player collision
-            }
-            else if(collision.Collider is TileMap)
+            if(collision.Collider is TileMap)
             {
                 // 1. 播放爆炸动画
                 // 2. 播放碰撞特效
                 // 3. 等待动画结束 await
                 // 4. 删除对象queue_free
-                QueueFree();
+
+                // QueueFree();
             }
             // GD.Print(collision.Collider);
         }
@@ -63,16 +63,49 @@ public class FireBall : KinematicBody2D, IElastic, IHitable
         //          - Bullet_1
         //          - Bullet_2
         //          - Bullet_3
-        if(Target == null || Weapon == null) return;
-        var end_posi = GetTree().Root.GetNode<Node2D>("MainMap/BulletPool").ToLocal(Target.GetParent<Node2D>().ToGlobal(Target.Position));
-        // dot(a, b) = |a|x|b| cos(a,b)
-        velocity = (end_posi - Position).Normalized() * Speed;
-        LookAt(end_posi);
-        velocity = MoveAndSlide(velocity);
+        if(Weapon == null) return;
+        if(Target != null)
+        {
+            var end_posi = GetTree().Root.GetNode<Node2D>("MainMap/BulletPool").ToLocal(Target.GetParent<Node2D>().ToGlobal(Target.Position));
+            // dot(a, b) = |a|x|b| cos(a,b)
+            velocity = (end_posi - Position).Normalized() * Speed;
+            LookAt(end_posi);
+            velocity = MoveAndSlide(velocity);
+            (sprite.Material as ShaderMaterial).SetShaderParam("Emission", enemy_color);
+        }
+        else
+        {
+            velocity = DefaultVelocity;
+            velocity = MoveAndSlide(velocity);
+        }
     }
 
+    public void Reflection()
+    {
+        Target = null;
+        (sprite.Material as ShaderMaterial).SetShaderParam("Emission", player_color);
+        DefaultVelocity = -velocity;
+        sprite.FlipH = true;
+    }
     public void OnHit(IAttacker attacker, string reason)
     {
         // 改变颜色， 改变移动方向，清除目标锁定
+        if(attacker is Player)
+            Reflection();
+    }
+    public void _on_Area2D_body_entered(Node body)
+    {
+        if(body is Player)
+        {
+            Target = null;
+            DefaultVelocity = velocity;
+            (body as IHitable).OnHit(this, "attacked by fire ball");
+            GetNode<CollisionShape2D>(nameof(CollisionShape2D)).SetDeferred("disabled", true);
+        }
+    }
+    public void _on_Area2D_body_exited(Node body)
+    {
+        GetNode<CollisionShape2D>(nameof(CollisionShape2D)).SetDeferred("disabled", false);
+
     }
 }

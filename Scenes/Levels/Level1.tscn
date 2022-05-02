@@ -34,7 +34,7 @@ shader = SubResource( 26 )
 shader_param/tint_color = Color( 0.521569, 0.25098, 0.196078, 1 )
 
 [node name="Level1" type="Node2D"]
-position = Vector2( -306, -193 )
+position = Vector2( 139, -71 )
 
 [node name="SavePoints" type="Node2D" parent="."]
 
@@ -146,6 +146,7 @@ position = Vector2( -501, -176 )
 
 [node name="Switch2" parent="SceneObjects/Switchs" instance=ExtResource( 13 )]
 position = Vector2( -696, -288 )
+gate = NodePath("../../Objects/StoneGate")
 
 [node name="GroundButton" parent="SceneObjects/Switchs" instance=ExtResource( 14 )]
 position = Vector2( -570, -255 )
@@ -154,5 +155,3 @@ position = Vector2( -570, -255 )
 
 [node name="StoneGate" parent="SceneObjects/Objects" instance=ExtResource( 15 )]
 position = Vector2( -434, -175 )
-
-[connection signal="switch_changed" from="SceneObjects/Switchs/Switch2" to="SceneObjects/Objects/StoneGate" method="Switch"]

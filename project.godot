@@ -44,8 +44,10 @@ CSharpConsole="*res://addons/quentincaffeino/console-csharp/src/Console.cs"
 
 window/size/width=320
 window/size/height=240
-window/size/test_width=640
-window/size/test_height=480
+window/size/resizable=false
+window/size/borderless=true
+window/size/test_width=1920
+window/size/test_height=1080
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
@@ -163,6 +165,8 @@ quentincaffeino_console_history_down={
 2d_physics/layer_5="Tilemap"
 2d_physics/layer_6="Item"
 2d_physics/layer_7="Interactive"
+2d_physics/layer_8="Bullet"
+2d_physics/layer_9="Dash"
 
 [physics]
 

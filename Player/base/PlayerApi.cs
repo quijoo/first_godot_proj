@@ -22,8 +22,8 @@ public partial class Player
 	}
 	public override void Reborn()
 	{
-        // TODO: 这里只需要 Load Player 即可
 		// EventManager.Send(this, new RebornEvent(this, ((Position2D)GetParent()).Position, "机制"));
+        GD.Print("call Reborn function");
 		Archive.ArchiveManager.LoadGame(0, "Player");
 	}
 	// Attack area related.
@@ -67,11 +67,11 @@ public partial class Player
 		// if(Health <= 0) Dead("unhealth");
 		Health -= 1;
 		EventManager.Send(this, new PlayerHurtedEvent(attacker, this, 1));
-		if(Health <= 0)
+        GetNode<StateMachine>("StateMachine").Transition<Hit>();
+        if(Health <= 0)
 		{
 			Dead("unhealth");
 		}
-        GetNode<StateMachine>("StateMachine").Transition<Hit>();
 	}
 	public override void Dead(string reason)
 	{
