@@ -60,6 +60,8 @@ public abstract class Controller : KinematicBody2D
 	private Dictionary<string, int> AnimationStateDict = new Dictionary<string, int>();
     // Aim relate
     public Controller Target = null;
+    // 随机种子
+    public RandomNumberGenerator _random = new RandomNumberGenerator();
 	public enum AnimationState : int
 	{
 		Error = -1,

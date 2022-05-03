@@ -31,6 +31,20 @@ namespace Events
             attacter = _attacter; victim = _victim; reason = _reason;
         }
 	}
+
+    /// <summary>
+	/// 击杀事件
+	/// </summary>
+	public struct LoadEvent : IEvent
+	{
+		public static readonly int EventId = typeof(LoadEvent).GetHashCode();
+		public int Id { get => EventId; }
+        public Player player;
+        public LoadEvent(Player _player)
+        {
+            player = _player;
+        }
+	}
 	/// <summary>
 	/// 重生事件
 	/// </summary>

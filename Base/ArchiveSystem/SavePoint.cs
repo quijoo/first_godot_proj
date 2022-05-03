@@ -5,6 +5,7 @@ public class SavePoint : ColorRect
 {
     Color green = Color.ColorN("green");
     Color red = Color.ColorN("red");
+    [Export] string MusicName;
 
     static SavePoint current = null; 
     public override void _Ready()
@@ -24,6 +25,11 @@ public class SavePoint : ColorRect
         if(current == this) return;
         if(body is Player)
         {
+            if(!MusicName.Empty())
+            {
+                SoundManager.StopAllMusic();
+                SoundManager.PlayMusic(MusicName);
+            }
             Archive.ArchiveManager.SaveGame(0, "Root");
             current = this;
         }

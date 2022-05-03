@@ -8,57 +8,85 @@ public class BossDash : StateNode<Boss_1>
         Running = 0,
         Stop,
     }
-    private List<Vector2> positions = new List<Vector2>();
-    private int index = 0;
-    private float speed = 150f;
+    [Export] private float speed = 150f;
+    Position2D StartPoint;
+    Position2D EndPoint;
+    /// <summary>
+    /// 反应距离（全局坐标系下）
+    /// </summary>
+    [Export] float ReactDistance;
+    // 反应时间
+    [Export] float ReactTime;
+    // sub state
+    bool isDash = false;
+    bool isStop = false;
+    RandomNumberGenerator random = new RandomNumberGenerator();
+
     public override void Enter()
     {
-        // 开启动画
-        target.animation_state.Travel("Run");    
-        // 计算冲刺点
-        positions.Clear();
-        index = 0;
-        foreach(var ray in target.NavigationRay)
+        // 1. 选择冲刺点（开始结束），开始点应该与玩家保持一定距离，开始点和结束点之间应该覆盖玩家的x坐标(蓄水池抽样)
+        if(target.Target == null)
         {
-            if(ray.IsColliding())
-            {
-                positions.Add(target.GetParent<Node2D>().ToLocal(ray.GetCollisionPoint()));
-            }
+            _machine.Transition<BossIdle>();
+            return;
         }
-        positions.Add(target.Position);
+        Node group1 = target.ScenePoints.GetNode<Node>("LandPoint/Group1");
+        Node group2 = target.ScenePoints.GetNode<Node>("LandPoint/Group2");
+        float d1 = group1.GetNode<Position2D>("Start").GlobalPosition.DistanceTo(target.Target.GlobalPosition);
+        float d2 = group2.GetNode<Position2D>("Start").GlobalPosition.DistanceTo(target.Target.GlobalPosition);
+        if(d1 > d2)
+        {
+            StartPoint = group1.GetNode<Position2D>("Start");
+            EndPoint = group1.GetNode<Position2D>("End");
+        }
+        else
+        {
+            StartPoint = group2.GetNode<Position2D>("Start");
+            EndPoint = group2.GetNode<Position2D>("End");
+        }
         
+        
+        GetNode<Timer>("ReactTimer").WaitTime = ReactTime;
+        GetNode<Timer>("ReactTimer").Start();
+        // 2. 移动到起始点
+        target.GlobalPosition = StartPoint.GlobalPosition;
+        isDash = false; isStop = false;
     }
     public override void Exit()
     {
 
     }
-    private float time = 3f;
     public override void _PhysicsUpdate(float delta)
     {
-        if(time > 0f)
+        // 4. 从起点冲刺到终点
+        if(isDash && !isStop)
         {
-            time -= delta;
-            return;
+            target.MoveTo(EndPoint, speed);
+            if(target.VectorTo(EndPoint).Length() < 1f)
+            {
+                GetNode<Timer>("ReactTimer").WaitTime = 0.7f;
+                GetNode<Timer>("ReactTimer").Start();
+                isStop = true;
+                return;
+            }
         }
-        target.MoveTo(positions[index], 5000f);
-        if(positions[index].DistanceTo(target.Position) < 30f)
+        
+
+        // 5. 调整面向
+        target.UpdateDirection();
+        // target.weapon.Fire(target.Target, 10f);
+    }
+    public void _on_ReactTime_timeout()
+    {
+        if(!isDash)
         {
-            if(index + 1 < positions.Count)
-            {
-                index += 1;
-                // 开启定时器
-                time = 1f;
-                target.UpdateDirection();
-                target.weapon.Fire(target.Target, 10f);
-            }
-            else
-            {
-                // target.velocity
-                _machine.Transition<BossIdle>();
-            }
+            target.animation_state.Travel("Run");
+            // SoundManager.PlaySound("Dash");     
+            isDash = true;
+        }
+        else
+        {
+            _machine.Transition<BossIdle>();
         }
     }
-#region HandleCollision
-    
-#endregion
 }

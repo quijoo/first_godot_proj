@@ -51,14 +51,12 @@ public class BasicFollowCamera : ColorRect
 	}
     static public void Follow(Controller worrior)
     {
-        GD.Print("Follow");
         HasTarget = true;
         Target = worrior as Controller;
         shape = (RectangleShape2D)(Target.collision_shape.Shape);
     }
     static public void UnFollow()
     {
-        GD.Print("UnFollow");
         HasTarget = false;
     }
 

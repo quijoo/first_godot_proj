@@ -11,25 +11,32 @@ public class BossAttack_1 : StateNode<Boss_1>
         Running = 0,
         Stop,
     }
+    Position2D AttachPoint;
+    [Export] float ReactTime;
+    bool isAttacked = false;
+    
 	public override void Enter()
 	{
-		target.animation_state.Travel("Attack");
-        target.SetAnimationState("Attack", 0);
-        // TODO: 添加攻击特效
-        // 1. 生成法术球（特效，碰撞，反馈）
-        // 由动画的方法调用轨道调用
-        // 2. 等待动画完成转移到 Idle 状态
-        // 3. 攻击不可中断 
-        // 4. 法术球可下劈跳（与关卡结合到达本来到不了的地方）      
+		
+        // 1. 选择一个 WallPoint
+        Node WallPoint = target.ScenePoints.GetNode<Node>("WallPoint");
+        int rand_index = target._random.RandiRange(0, WallPoint.GetChildCount() - 1);
+        AttachPoint = WallPoint.GetChild<Position2D>(rand_index);
+        target.GlobalPosition = AttachPoint.GlobalPosition;
+        GetNode<Timer>("Timer").WaitTime = ReactTime;
+        GetNode<Timer>("Timer").Start();
+        isAttacked = false;
 	}
 	public override void _PhysicsUpdate(float delta)
 	{
-        if(target.GetAnimationState("Attack") == (int)AnimationState.Stop)
+
+        if(target.GetAnimationState("Attack") == (int)AnimationState.Stop && isAttacked)
 		{
 			target.Idle();
 		}
-		target.GravityControllHandler(10, delta);
+		
 		target.SnapControlHandler();
+        target.DirectionToTarget();
 	}
 
     public void SpawnFireball()
@@ -39,7 +46,14 @@ public class BossAttack_1 : StateNode<Boss_1>
             GD.Print("No target");
             return;
         }
-        target.weapon.Fire(target.Target, 0.4f);
+        target.weapon.Fire(target.Target, 0.0f);
+    }
+
+    public void _on_Timer_timeout()
+    {
+        target.animation_state.Travel("Attack");
+        target.SetAnimationState("Attack", 0); 
+        isAttacked = true;
     }
 #region HandleCollision
 	

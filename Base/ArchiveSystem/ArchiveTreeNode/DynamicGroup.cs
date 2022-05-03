@@ -17,16 +17,21 @@ public sealed class DynamicGroup : ArchiveTreeNode
     {
         data[NodeNameKey] = node.Name;
         data[SceneFileNameKey] = node.Filename;
-        data[ParentPathKey] = node.GetParent().GetPath();
+        data[ParentPathKey] = node.GetParent().GetPath().ToString();
+        data[NodePathKey] = node.GetPath().ToString();
+        GD.Print(node.Name);
         (node as Archivable).Save(data);
     }
     public override void LoadExecute(in Dictionary data)
     {
+        Node SameNode = GetNodeOrNull((string)data[NodePathKey]);
+        // 不能用 QueueFree
+        if(SameNode!=null) SameNode.Free();
         PackedScene newObjectScene = (PackedScene)ResourceLoader.Load(data[SceneFileNameKey].ToString());
         Archivable node = newObjectScene.Instance<Archivable>();
+        (node as Archivable).Load(data);
         GetNode(data[ParentPathKey].ToString()).AddChild((Node)node);
         node.Name = data[NodeNameKey].ToString();
-        (node as Archivable).Load(data);
     }
     // public override void LoadeHandler(Array nodes, in Array<Dictionary> array)
     // {

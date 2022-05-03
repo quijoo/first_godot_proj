@@ -52,9 +52,28 @@ public void Idle()
     {
         
     }
-    public void MoveTo(Vector2 target, float speed)
+    public void MoveTo(Node2D _target, float speed)
     {
-        Vector2 move_direction = target - Position;
+        if(_target == null)
+        {
+            GD.Print("target is null");
+            return;
+        }
+        Vector2 move_direction = this.VectorTo(_target);
+        if(move_direction.x > 0) direction = Direction.RIGHT;
+        if(move_direction.x < 0) direction = Direction.LEFT;
+        UpdateDirection();
+        velocity = speed * move_direction.Normalized();
+        velocity = MoveAndSlide(velocity);
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="_target">目标位置(局部坐标)</param>
+    /// <param name="speed"></param>
+    public void MoveTo(Vector2 _target, float speed)
+    {
+        Vector2 move_direction = _target - Position;
         if(move_direction.x > 0) direction = Direction.RIGHT;
         if(move_direction.x < 0) direction = Direction.LEFT;
         UpdateDirection();

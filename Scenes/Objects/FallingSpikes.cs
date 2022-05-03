@@ -10,7 +10,7 @@ public class FallingSpikes : KinematicBody2D, Archivable, IAttacker
         ground,
     }
     [Export] public int gravity = 1000;
-    public float Damage { get => 3;}
+    public float Damage { get => 4f;}
     private RayCast2D ray; 
     private Vector2 velocity;
     private bool _EnablePhysics = true;
@@ -62,10 +62,13 @@ public class FallingSpikes : KinematicBody2D, Archivable, IAttacker
         Position = new Vector2((float)data["PosX"], (float)data["PosY"]);
         state = (State)data["state"];
         velocity.y = (float) data["V.y"];
+        GD.Print("Load spike");
         if(state != State.ground)   GetNode<CollisionShape2D>("Area2D/CollisionShape2D").SetDeferred("disabled", false);
     }
     public void Save(in Dictionary data)
     {
+        GD.Print("Save spike");
+
         data["PosX"] = Position.x;
         data["PosY"] = Position.y;
         data["state"] = (int)state;
@@ -75,5 +78,7 @@ public class FallingSpikes : KinematicBody2D, Archivable, IAttacker
     {
         if(body is Player)
             (body as IHitable).OnHit(this, "spike");
+    		// Archive.ArchiveManager.LoadGame(0, "Root");
+
     }
 }

@@ -39,6 +39,7 @@ public class Dash : StateNode<Player>
 
         temp_mask = target.CollisionMask;
         target.CollisionMask = DashMask;
+        SoundManager.PlaySound("Dash");     
 
         // SoundManager.dash_sound.Play();
     }

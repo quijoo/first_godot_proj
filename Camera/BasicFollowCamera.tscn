@@ -14,4 +14,5 @@ size = Vector2( 100, 100 )
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 16, 32 )
 current = true
+zoom = Vector2( 0.4, 0.4 )
 smoothing_enabled = true

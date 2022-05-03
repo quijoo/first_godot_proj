@@ -8,8 +8,8 @@ public class SpikePit : StaticBody2D, IElastic, IAttacker
     // private string b = "text";
 
     // Called when the node enters the scene tree for the first time.
-    [Export] Vector2 _ReboundSpeed = Vector2.Up * 300;
-    [Export] public float Damage {get;set;} = 5f;
+    [Export] Vector2 _ReboundSpeed = Vector2.Up * 350;
+    [Export] public float Damage {get;set;} = 4f;
     public Vector2 ReboundSpeed { get=>_ReboundSpeed; }
 
     public Vector2 Rebound(Vector2 collision, Vector2 collided)
@@ -20,6 +20,8 @@ public class SpikePit : StaticBody2D, IElastic, IAttacker
     {
         if(body is IHitable)
         {
+    		// Archive.ArchiveManager.LoadGame(0, "Root");
+            // 不造成伤害
             (body as IHitable).OnHit(this, "spike");
         }
     }

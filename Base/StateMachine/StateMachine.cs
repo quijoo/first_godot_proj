@@ -6,7 +6,7 @@ using System.Collections.Generic;
 public class StateMachine : Node
 {
 	[Export] public NodePath initial_state_path;
-	private IState state;
+	public IState state;
 	private Dictionary<string, System.Object> state_info = new Dictionary<string, System.Object>();
 	[Signal] public delegate void transitioned(string state_name);
 

@@ -13,7 +13,7 @@ public class BossHit : StateNode<Boss_1>
     {
         // GD.Print();
         target.SetAnimationState("BossHit", (int)AnimationState.Running);
-        target.animation_state.Travel("Hit");        
+        target.animation_state.Travel("Hit");    
         // target.velocity.
     }
     public override void Exit()

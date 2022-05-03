@@ -39,7 +39,6 @@ public class DownAttack : StateNode<Player>
 #region HandleCollision
     private void _on_Area2D_body_entered(Node body)
     {
-        GD.Print("是谁触发了？");
         if(body is IElastic)
         {
             IElastic e = body as IElastic;

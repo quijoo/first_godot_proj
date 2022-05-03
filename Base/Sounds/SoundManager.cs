@@ -10,8 +10,8 @@ public class SoundManager : Node2D
 {
     static Node2D music_list;
     static Node2D sound_list;
-    static Dictionary<string,AudioStreamPlayer> MusicDictionary = new Dictionary<string,AudioStreamPlayer>();
-    static Dictionary<string,AudioStreamPlayer> SoundDictionary = new Dictionary<string,AudioStreamPlayer>();
+    static Dictionary<string, AudioStreamPlayer> MusicDictionary = new Dictionary<string,AudioStreamPlayer>();
+    static Dictionary<string, AudioStreamPlayer> SoundDictionary = new Dictionary<string,AudioStreamPlayer>();
 
     public override void _Ready()
     {
@@ -20,12 +20,13 @@ public class SoundManager : Node2D
         for(int i = 0; i < music_list.GetChildCount(); i++)
         {
             var child = music_list.GetChild<AudioStreamPlayer>(i);
-            MusicDictionary.Add(child.Name, child);
+            MusicDictionary[child.Name] = child;
+
         }
         for(int i = 0; i < sound_list.GetChildCount(); i++)
         {
             var child = sound_list.GetChild<AudioStreamPlayer>(i);
-            SoundDictionary.Add(child.Name, child);
+            SoundDictionary[child.Name] = child;
         }
     }
 
@@ -37,9 +38,12 @@ public class SoundManager : Node2D
     {
         
     }
-    public void StopAllMusic()
+    static public void StopAllMusic()
     {
-
+        foreach(var music in MusicDictionary.Values)
+        {
+            music.Stop();
+        }
     }
     static public void PlayMusic(string name)
     {

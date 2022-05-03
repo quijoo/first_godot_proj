@@ -22,9 +22,9 @@ public partial class Player
 	}
 	public override void Reborn()
 	{
-		// EventManager.Send(this, new RebornEvent(this, ((Position2D)GetParent()).Position, "机制"));
+		EventManager.Send(this, new RebornEvent(this, ((Position2D)GetParent()).Position, "机制"));
         GD.Print("call Reborn function");
-		Archive.ArchiveManager.LoadGame(0, "Player");
+		Archive.ArchiveManager.LoadGame(0, "Root");
 	}
 	// Attack area related.
 	public void EnableHorizontalArea()
@@ -43,7 +43,6 @@ public partial class Player
 	}
 	public void DisableDownArea()
 	{
-        GD.Print("DisableDownArea");
 		attack.down_area.GetNode<CollisionPolygon2D>(nameof(CollisionPolygon2D)).SetDeferred("disabled", true);
 	}
 	public override void UpdateDirection()
@@ -63,10 +62,8 @@ public partial class Player
 	}
 	public void OnHit(IAttacker attacker, string info)
 	{
-		// Health -= attacker.Damage;
-		// if(Health <= 0) Dead("unhealth");
-		Health -= 1;
-		EventManager.Send(this, new PlayerHurtedEvent(attacker, this, 1));
+		Health -= attacker.Damage;
+		EventManager.Send(this, new PlayerHurtedEvent(attacker, this, attacker.Damage));
         GetNode<StateMachine>("StateMachine").Transition<Hit>();
         if(Health <= 0)
 		{

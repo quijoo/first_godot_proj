@@ -7,10 +7,12 @@ script = ExtResource( 1 )
 Version = "1.0.0"
 CurrentSceneName = "Level3"
 SceneMap = {
+"scene_Level1_Dynamic_data": [  ],
 "scene_Level1_Manager_data": [  ],
 "scene_Level1_Player_data": [ {
-"PosX": 113.373,
-"PosY": 19.924,
+"Health": 4.0,
+"PosX": 114.14,
+"PosY": 19.9242,
 "_sys_node_self_path": NodePath("/root/MainMap/Level1/PlayerPosition/Player")
 } ],
 "scene_Level1_SceneObject_data": [ {
@@ -33,14 +35,14 @@ SceneMap = {
 "state": 0
 }, {
 "PosX": -586.0,
-"PosY": -181.004,
-"V.y": 0.0,
+"PosY": -212.362,
+"V.y": 112.5,
 "_sys_node_self_path": NodePath("/root/MainMap/Level1/SceneObjects/Spikes/FallingSpike/FallingSpikes3"),
-"state": 2
+"state": 1
 }, {
 "PosX": -571.0,
-"PosY": -190.226,
-"V.y": 237.5,
+"PosY": -216.841,
+"V.y": 62.5,
 "_sys_node_self_path": NodePath("/root/MainMap/Level1/SceneObjects/Spikes/FallingSpike/FallingSpikes4"),
 "state": 1
 }, {
@@ -57,10 +59,10 @@ SceneMap = {
 "state": 0
 }, {
 "PosX": -601.0,
-"PosY": -181.001,
-"V.y": 0.0,
+"PosY": -205.384,
+"V.y": 162.5,
 "_sys_node_self_path": NodePath("/root/MainMap/Level1/SceneObjects/Spikes/FallingSpike/FallingSpikes6"),
-"state": 2
+"state": 1
 }, {
 "PosX": -473.0,
 "PosY": -218.0,
@@ -68,10 +70,12 @@ SceneMap = {
 "_sys_node_self_path": NodePath("/root/MainMap/Level1/SceneObjects/Spikes/FallingSpike/FallingSpikes9"),
 "state": 0
 } ],
+"scene_Level2_Dynamic_data": [  ],
 "scene_Level2_Manager_data": [  ],
 "scene_Level2_Player_data": [ {
+"Health": 4.0,
 "PosX": 369.826,
-"PosY": -116.412,
+"PosY": -118.607,
 "_sys_node_self_path": NodePath("/root/MainMap/Level2/PlayerPosition/Player")
 } ],
 "scene_Level2_SceneObject_data": [ {
@@ -117,11 +121,49 @@ SceneMap = {
 "_sys_node_self_path": NodePath("/root/MainMap/Level2/SceneObjects/Spikes/FallingSpike/FallingSpikes6"),
 "state": 2
 } ],
+"scene_Level3_Dynamic_data": [ {
+"FaildTile": "../NullableTile",
+"Gate_1": "../StoneGate",
+"Gate_2": "../SceneObjects/StoneGate",
+"Health": 15.0,
+"Land": "../Land",
+"PosX": -326.0,
+"PosY": -152.0,
+"_Damage": 1.0,
+"_ReboundSpeed.x": 0.0,
+"_ReboundSpeed.y": -300.0,
+"_sys_node_packedscene_filename": "res://Boss/Boss_1.tscn",
+"_sys_node_parent_path": "/root/MainMap/Level3",
+"_sys_node_self_name": "Boss_1",
+"_sys_node_self_path": "/root/MainMap/Level3/Boss_1",
+"gate_path": "../SceneObjects/StoneGate",
+"scene_point_path": "../ScenePoint"
+}, {
+"PosX": -320.0,
+"PosY": -32.0,
+"_sys_node_packedscene_filename": "res://Scenes/Objects/NullableTile.tscn",
+"_sys_node_parent_path": "/root/MainMap/Level3",
+"_sys_node_self_name": "NullableTile",
+"_sys_node_self_path": "/root/MainMap/Level3/NullableTile"
+} ],
 "scene_Level3_Manager_data": [  ],
 "scene_Level3_Player_data": [ {
-"PosX": 38.7999,
-"PosY": -92.0758,
+"Health": 4.0,
+"PosX": 0.0,
+"PosY": 0.0,
 "_sys_node_self_path": NodePath("/root/MainMap/Level3/PlayerPosition/Player")
 } ],
-"scene_Level3_SceneObject_data": [  ]
+"scene_Level3_SceneObject_data": [ {
+"PosX": 8.0,
+"PosY": 100.0,
+"V.y": 0.0,
+"_sys_node_self_path": NodePath("/root/MainMap/Level3/Map/TileMap/FallingSpikes"),
+"state": 0
+}, {
+"PosX": 23.0,
+"PosY": 100.0,
+"V.y": 0.0,
+"_sys_node_self_path": NodePath("/root/MainMap/Level3/Map/TileMap/FallingSpikes2"),
+"state": 0
+} ]
 }

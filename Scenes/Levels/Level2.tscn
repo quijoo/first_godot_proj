@@ -28,7 +28,7 @@ shader = SubResource( 26 )
 shader_param/tint_color = Color( 0.521569, 0.25098, 0.196078, 1 )
 
 [node name="Level2" type="Node2D"]
-position = Vector2( -1056, 97 )
+position = Vector2( -1179, 168 )
 
 [node name="SavePoints" type="Node2D" parent="."]
 

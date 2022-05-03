@@ -17,7 +17,6 @@ namespace Archive
     {   
         // 使用 Resource 的方式存档
         [Export] private Script GameSave;
-        // public string SAVE_FOLDER = OS.GetUserDataDir() + ProjectSettings.GetSetting("application/config/custom_user_dir_name");
         static private ArchiveManager instance = null;
         static private Dictionary<string, ArchiveTreeNode> NodeMap = new Dictionary<string, ArchiveTreeNode>();
         public delegate void NodeProcess(Node node);

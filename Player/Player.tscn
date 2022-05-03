@@ -22,7 +22,7 @@
 
 [sub_resource type="ShaderMaterial" id=69]
 shader = ExtResource( 19 )
-shader_param/width = 1.0
+shader_param/width = 0.4
 shader_param/outline_color = Color( 0.160784, 0.956863, 0.0470588, 1 )
 
 [sub_resource type="RectangleShape2D" id=49]
@@ -560,6 +560,8 @@ ProbeLength = 2.0
 HorizontalRayNum = 3
 VerticalRayNum = 6
 BoxColor = Color( 0.847059, 0.890196, 0.12549, 0.619608 )
+Health = 4.0
+_Damage = 1.0
 rigid_push = Vector2( 50, 0 )
 TrailPath = "res://Effect/Trail.tscn"
 packed_trail = ExtResource( 12 )
@@ -659,14 +661,14 @@ position = Vector2( 4, 0 )
 collision_mask = 6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea/HorizontalAttackArea"]
-polygon = PoolVector2Array( 1, -4, 13, -4, 13, 1, 13, 6, 0, 6 )
+polygon = PoolVector2Array( 1, -4, 13, -4, 23, 0, 15, 6, 0, 6 )
 
 [node name="DownAttackArea" type="Area2D" parent="AttackArea"]
 position = Vector2( 0, 7 )
 collision_mask = 6
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea/DownAttackArea"]
-polygon = PoolVector2Array( 4, 0, 4, 8, 0, 8, -5, 8, -5, 0 )
+polygon = PoolVector2Array( 4, 0, 4, 11, -1, 11, -5, 11, -5, 0 )
 
 [node name="Bag" parent="." instance=ExtResource( 18 )]
 

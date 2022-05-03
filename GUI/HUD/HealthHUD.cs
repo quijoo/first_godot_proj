@@ -10,6 +10,8 @@ public class HealthHUD : GridContainer
         base._EnterTree();
         EventManager.Subscribe<PlayerHurtedEvent>(this, OnPlayerHurtedEvent);
         EventManager.Subscribe<RebornEvent>(this, OnRebornEvent);
+        EventManager.Subscribe<LoadEvent>(this, OnLoadEvent);
+
 
     }
     public override void _ExitTree()
@@ -17,6 +19,8 @@ public class HealthHUD : GridContainer
         base._ExitTree();
         EventManager.Unsubscribe<PlayerHurtedEvent>(this, OnPlayerHurtedEvent);
         EventManager.Unsubscribe<RebornEvent>(this, OnRebornEvent);
+        EventManager.Unsubscribe<LoadEvent>(this, OnLoadEvent);
+
     }
     [Export] PackedScene Heart;
     private List<Node> heart_list = new List<Node>();
@@ -69,6 +73,14 @@ public class HealthHUD : GridContainer
         if(ee.node is Player)
         {
             Set((int)(ee.node as Player).Health);
+        }
+    }
+    public void OnLoadEvent(Node node, IEvent e)
+    {
+        LoadEvent ee = (LoadEvent)e;
+        if(ee.player is Player)
+        {
+            Set((int)(ee.player as Player).Health);
         }
     }
 }

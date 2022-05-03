@@ -22,7 +22,7 @@ public class FireBall : KinematicBody2D, IElastic, IHitable, IAttacker
     Color enemy_color = Color.ColorN("green");
     Vector2 DefaultVelocity = Vector2.Right;
 
-    public float Damage { private set; get; } = 10f;
+    public float Damage { private set; get; } = 1f;
     public override void _Ready()
     {
         hurt_area = GetNode<Area2D>(nameof(Area2D));
@@ -47,8 +47,8 @@ public class FireBall : KinematicBody2D, IElastic, IHitable, IAttacker
                 // 2. 播放碰撞特效
                 // 3. 等待动画结束 await
                 // 4. 删除对象queue_free
-
-                // QueueFree();
+                GD.Print("Queue fire ball");
+                QueueFree();
             }
             // GD.Print(collision.Collider);
         }

@@ -25,7 +25,6 @@ namespace Archive
                 ArchiveTreeNode root = GetNode<ArchiveTreeNode>("Root");
                 ArchiveTreeNode.black_board[ArchiveTreeNode.current_group_name_key] = node.Name;
                 ArchiveTreeNode.black_board[ArchiveTreeNode.current_data_key] = saver.SceneMap[string.Format(SceneNamePrefix, SceneManager.SceneName, node.Name)];
-
                 root.LoadHandler(root.GetPathTo(node));
             }
             if(!NodeMap.ContainsKey(name))

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scenes/Levels/Tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Tiles/TileMap.tscn" type="PackedScene" id=2]
@@ -14,7 +14,6 @@
 [ext_resource path="res://Scenes/Objects/StoneGate.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Effects/Trail.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Base/ArchiveSystem/SavePoint.tscn" type="PackedScene" id=31]
-[ext_resource path="res://Boss/Boss_1.tscn" type="PackedScene" id=32]
 [ext_resource path="res://Item/ItemSpawner.tscn" type="PackedScene" id=33]
 [ext_resource path="res://NPC/Npc.tscn" type="PackedScene" id=34]
 
@@ -34,7 +33,7 @@ shader = SubResource( 26 )
 shader_param/tint_color = Color( 0.521569, 0.25098, 0.196078, 1 )
 
 [node name="Level1" type="Node2D"]
-position = Vector2( 139, -71 )
+position = Vector2( -316, -304 )
 
 [node name="SavePoints" type="Node2D" parent="."]
 
@@ -129,9 +128,6 @@ position = Vector2( -414, -272 )
 
 [node name="Enemy" parent="SceneObjects/Monster" instance=ExtResource( 8 )]
 position = Vector2( -593, -261 )
-
-[node name="Boss_1" parent="SceneObjects/Monster" instance=ExtResource( 32 )]
-position = Vector2( -675, -192 )
 
 [node name="Doors" type="Node2D" parent="SceneObjects"]
 

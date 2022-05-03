@@ -5,8 +5,7 @@ using System;
 public partial class Enemy : Warrior, IElastic, IHitable, IAttacker
 {
     // IAttacker
-    [Export] private float _Damage;
-    public float Damage { get => _Damage;}
+    [Export] public float Damage { get; set;} = 1f;
     // IElastic
     [Export] Vector2 _ReboundSpeed = Vector2.Up * 200;
     public Vector2 ReboundSpeed { get => _ReboundSpeed; }

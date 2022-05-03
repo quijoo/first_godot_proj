@@ -15,7 +15,6 @@ public class Push : StateNode<Player>
     {
         if(!target.collision.AnyUndected(Direction.DOWN) && target.velocity.y > 0)
         {
-            GD.Print(target.velocity);
             _machine.Transition<Fall>();
             return;
         }
@@ -36,7 +35,6 @@ public class Push : StateNode<Player>
             if(collider is RigidBox)
             {
                 normal.y = 0f;
-                GD.Print(normal);
                 ((RigidBox)collider).ApplyCentralImpulse(-normal * target.rigid_push);
             }
         }

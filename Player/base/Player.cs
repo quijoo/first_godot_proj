@@ -71,8 +71,7 @@ public partial class Player : Warrior, IAttacker, IHitable, Archivable
         DisableHorizontalArea();
         // 等待所有静态节点加载完毕, 这里需要等待根节点加载完毕，那么
         // just for test
-        UIManager.hud.Health.Set(10);
-        Health = 10;
+        UIManager.hud.Health.Set((int)Health);
         // bag init
         bag = GetNode<Bag>("Bag");
         BasicFollowCamera.Follow(this);

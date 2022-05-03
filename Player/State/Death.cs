@@ -33,6 +33,9 @@ public class Death : StateNode<Player>
     }
     public override void _PhysicsUpdate(float delta)
     {
+        // 重置
+        target.DisableDownArea();
+        target.DisableHorizontalArea();
 
         if(target.GetAnimationState("Death") == (int)AnimationState.Stop)
         {

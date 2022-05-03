@@ -4,7 +4,7 @@
 [ext_resource path="res://Boss/FireBall.cs" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 7.0
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id=2]
 radius = 8.0
@@ -340,6 +340,7 @@ animations = [ {
 
 [node name="FireBall" type="KinematicBody2D"]
 collision_layer = 128
+collision_mask = 17
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -356,7 +357,7 @@ material = SubResource( 65 )
 position = Vector2( -7, 0 )
 frames = SubResource( 63 )
 animation = "Fireball"
-frame = 39
+frame = 26
 playing = true
 
 [node name="HurtEffect" type="Node" parent="."]

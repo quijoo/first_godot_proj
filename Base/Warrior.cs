@@ -5,7 +5,7 @@ public abstract class Warrior : Controller
 {
     // 基本属性
     // 健康值
-    public float Health;
+    [Export] public float Health;
 
     // 所有的 Warrior 都应该监听事件？
     // 这里只是写一个 Demo， 实际上 Warrior 可以不监听事件
