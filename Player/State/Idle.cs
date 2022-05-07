@@ -20,17 +20,20 @@ public class Idle : StateNode<Player>
 	}
 	public override void _PhysicsUpdate(float delta)
 	{
-		if(!target.IsOnFloor())
+		target.GravityControllHandler(target.FixedGravity, delta);
+		target.SnapControlHandler();
+        if(target.IsOnFloor())
+        {
+            target.velocity += target.GetFloorVelocity();
+        }
+        if(!target.IsOnFloor())
 		{
-			if(target.velocity.y > 0)
+			if(target.velocity.y >= 0)
 			{
 				_machine.Transition<Fall>();
 				return;
 			}
 		}
-		target.GravityControllHandler(target.FixedGravity, delta);
-		target.SnapControlHandler();
-
         // handle collisions
         foreach(var collision in target.Extend_GetCollison())
         {

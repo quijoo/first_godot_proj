@@ -21,7 +21,6 @@ public abstract class Controller : KinematicBody2D
     [Export] public Vector2 SuperWallJumpSpeed = new Vector2(-200, -200);
 
 
-
     // Grace Time
     [Export] private float DefaultGraceTimer = 0.1f;
     public float GraceTimer { get; private set; }
@@ -31,6 +30,8 @@ public abstract class Controller : KinematicBody2D
     public float JumpBufferTimer;
 	// position state parameters
 	public Vector2 velocity;
+    public Vector2 GlobalVelocity { get => GetParent<Node2D>().ToGlobal(velocity); }
+    public Vector2 ScreenPosition { get => (GetParent<Node2D>().GetViewportTransform() * GetParent<Node2D>().GetGlobalTransform() * Position); }
 	public Direction direction = Direction.RIGHT;
 	// cache
 	public AnimationNodeStateMachinePlayback animation_state;

@@ -2,7 +2,7 @@ using Godot;
 using System;
 // StateMachine's state node interface.
 // 每一个 Controller 对象都应该拥有一个 StateMachine 对象
-public abstract class StateNode<T> : StateBase, IState where T : Controller
+public abstract class StateNode<T> : StateBase, IState where T : KinematicBody2D
 {
     // State node's _machine is it's parent.
     protected T target;

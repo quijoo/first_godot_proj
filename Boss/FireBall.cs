@@ -34,7 +34,6 @@ public class FireBall : KinematicBody2D, IElastic, IHitable, IAttacker
         Target = target;
         Weapon = weapon;
         Speed = speed;
-        Position = GetTree().Root.GetNode<Node2D>("MainMap/BulletPool").ToLocal(Weapon.GetParent<Node2D>().ToGlobal(Weapon.Position));
     }
 
     public override void _PhysicsProcess(float delta)
@@ -66,7 +65,7 @@ public class FireBall : KinematicBody2D, IElastic, IHitable, IAttacker
         if(Weapon == null) return;
         if(Target != null)
         {
-            var end_posi = GetTree().Root.GetNode<Node2D>("MainMap/BulletPool").ToLocal(Target.GetParent<Node2D>().ToGlobal(Target.Position));
+            var end_posi = GetTree().Root.GetNode<Node2D>("Main/BulletPool").ToLocal(Target.GetParent<Node2D>().ToGlobal(Target.Position));
             // dot(a, b) = |a|x|b| cos(a,b)
             velocity = (end_posi - Position).Normalized() * Speed;
             LookAt(end_posi);

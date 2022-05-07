@@ -62,7 +62,16 @@ public class SceneManager : Node
 	}
     private void AddPlayer(Node scene, Node player)
     {
-        {scene.GetNode<Position2D>("PlayerPosition").AddChild(player);}
+        Node position_node = scene.FindNode("PlayerPosition");
+        if(position_node!=null && position_node is Position2D)
+        {
+            position_node.AddChild(player);
+        }
+        else
+        {
+            GD.Print(position_node);
+            GD.Print("cant find player spawn position");
+        }
     }
     // 加载场景到缓存
     static public Node LoadScene(string scene_name)
@@ -87,7 +96,8 @@ public class SceneManager : Node
             Node scene = PackedSceneDictionary[scene_name].Instance<Node>();
             LoadedSceneNodeDictionary[scene_name] = scene;
             LoadedSceneNameQueue.Enqueue(scene_name);
-            instance.GetTree().Root.GetNode("MainMap").CallDeferred("add_child", scene);
+            // 2022.5.6 修改场景管理器工作方式
+            // instance.GetTree().Root.GetNode("MainMap").CallDeferred("add_child", scene);
             // scene.Name = scene_name;
             return scene;
         }
@@ -105,10 +115,21 @@ public class SceneManager : Node
     static public void ChangeScene(string scene_name)
 	{
         if(!IsReady) return;
-        if(GetScene(scene_name) == null) return;
-
-        (GetScene(SceneName) as Node2D).Visible = false;
-        (GetScene(scene_name) as Node2D).Visible = true;
+        if(GetScene(scene_name) == null)
+        {
+            GD.Print("there is no scene named ", scene_name);
+        }
+        GD.Print("load scene ", scene_name);
+        // 不要变更Main场景的坐标
+        // 移动 Player
+        Viewport view = instance.GetTree().Root.GetNode<Main>("Main").viewport;
+        if(view.IsAParentOf(GetScene(SceneName)))
+        {
+            view.CallDeferred("remove_child", GetScene(SceneName));
+        }
+        view.CallDeferred("add_child", GetScene(scene_name));
+        
+        // 更换场景名
         SceneName = scene_name;
     }
 #endregion

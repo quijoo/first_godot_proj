@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Objects/InteractiveLine.cs" type="Script" id=1]
+[ext_resource path="res://Scenes/Objects/InteractiveLineFollow.cs" type="Script" id=2]
+[ext_resource path="res://Scenes/Objects/InteractiveLineLock.cs" type="Script" id=3]
+[ext_resource path="res://Scenes/Objects/InteractiveLineMove.cs" type="Script" id=4]
+[ext_resource path="res://Base/StateMachine/StateMachine.cs" type="Script" id=5]
+
+[node name="InteractiveLine" type="KinematicBody2D"]
+collision_layer = 1024
+collision_mask = 2048
+script = ExtResource( 1 )
+DefaultBias = Vector2( -50, 0 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 5 )
+initial_state_path = NodePath("InteractiveLineFollow")
+
+[node name="InteractiveLineLock" type="Node" parent="StateMachine"]
+script = ExtResource( 3 )
+
+[node name="InteractiveLineFollow" type="Node" parent="StateMachine"]
+script = ExtResource( 2 )
+
+[node name="InteractiveLineMove" type="Node" parent="StateMachine"]
+script = ExtResource( 4 )

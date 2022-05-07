@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Base/Camera/BasicFollowCamera.tscn" type="PackedScene" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Resource/InteractiveWindow.gdshader" type="Shader" id=4]
+[ext_resource path="res://Main.cs" type="Script" id=5]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_blend_mode = 0
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 4 )
+shader_param/start = null
+shader_param/texture_size = Vector2( 0, 0 )
+shader_param/window_size = null
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="_ScreenViewport" type="Viewport" parent="."]
+size = Vector2( 960, 540 )
+
+[node name="FollowCamera" parent="_ScreenViewport" instance=ExtResource( 2 )]
+
+[node name="BulletPool" type="Position2D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="_ScreenTexture" type="TextureRect" parent="CanvasLayer"]
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -40.0
+margin_bottom = -40.0
+texture = ExtResource( 3 )
+expand = true

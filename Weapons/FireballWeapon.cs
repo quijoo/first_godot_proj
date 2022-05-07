@@ -22,7 +22,7 @@ public class FireballWeapon : Position2D
         // TOODO：调整Bullet的继承关系
         Node2D bullet = Bullet.Instance<Node2D>();
         // TODO：暂时这么写
-        GetTree().Root.GetNode<Position2D>("MainMap/BulletPool").AddChild(bullet);
+        GetTree().Root.GetNode<Position2D>("Main/BulletPool").AddChild(bullet);
         (bullet as FireBall).Init(target, this, Speed);
 
     }

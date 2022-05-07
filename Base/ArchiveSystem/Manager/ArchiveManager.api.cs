@@ -25,7 +25,8 @@ namespace Archive
             SceneManager.LoadScene(save_game.CurrentSceneName);
             SceneManager.ChangeScene(save_game.CurrentSceneName);
             // core func
-            Load(save_game, node_name);
+            instance.CallDeferred("Load", save_game, node_name);
+            // Load(save_game, node_name);
             // GetTree().SetDeferred("paused", false);
 
         }

@@ -339,7 +339,7 @@ animations = [ {
 } ]
 
 [node name="FireBall" type="KinematicBody2D"]
-collision_layer = 128
+collision_layer = 4224
 collision_mask = 17
 script = ExtResource( 2 )
 
@@ -357,7 +357,7 @@ material = SubResource( 65 )
 position = Vector2( -7, 0 )
 frames = SubResource( 63 )
 animation = "Fireball"
-frame = 26
+frame = 50
 playing = true
 
 [node name="HurtEffect" type="Node" parent="."]

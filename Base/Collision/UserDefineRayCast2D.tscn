@@ -5,5 +5,5 @@
 [node name="UserDefineRayCast2D" type="RayCast2D"]
 enabled = true
 cast_to = Vector2( 0, 0 )
-collision_mask = 22
+collision_mask = 1046
 script = ExtResource( 1 )

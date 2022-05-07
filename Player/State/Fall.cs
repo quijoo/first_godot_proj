@@ -25,9 +25,15 @@ public class Fall : StateNode<Player>
         target.GravityControllHandler(target.FixedGravity, delta);
         // 限制最大下落速度
         target.velocity.y = target.velocity.y > target.MaxFallSpeed ? target.MaxFallSpeed : target.velocity.y;
-        target.SnapControlHandler();
+        // target.SnapControlHandler();
+        target.velocity = target.MoveAndSlide(target.velocity);
 
         if(target.IsOnFloor())
+        {
+            _machine.Transition<Idle>();
+            return;
+        }
+        if(target.collision.AnyDected(Direction.DOWN))
         {
             _machine.Transition<Idle>();
             return;

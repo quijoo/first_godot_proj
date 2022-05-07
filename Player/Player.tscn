@@ -546,7 +546,7 @@ graph_offset = Vector2( -47.4435, 52.4203 )
 extents = Vector2( 18.5, 11.5 )
 
 [node name="Player" type="KinematicBody2D" groups=["Player"]]
-collision_mask = 20
+collision_mask = 1044
 script = ExtResource( 1 )
 MaxJumpHeight = 55.0
 MaxJumpTime = 0.4
@@ -617,7 +617,7 @@ script = ExtResource( 9 )
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource( 5 )
 DashLayer = 256
-DashMask = 16
+DashMask = 1040
 
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource( 10 )

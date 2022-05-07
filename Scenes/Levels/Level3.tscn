@@ -52,10 +52,10 @@ margin_bottom = 47.0
 MusicName = "NormalMusic"
 
 [node name="SavePoint6" parent="SavePoints" instance=ExtResource( 31 )]
-margin_left = -364.0
-margin_top = 135.0
-margin_right = -324.0
-margin_bottom = 175.0
+margin_left = -228.0
+margin_top = 134.0
+margin_right = -188.0
+margin_bottom = 174.0
 MusicName = "NormalMusic"
 
 [node name="SavePoint7" parent="SavePoints" instance=ExtResource( 31 )]
@@ -281,6 +281,10 @@ position = Vector2( 320, 318 )
 [node name="Door" parent="SceneObjects/Doors" instance=ExtResource( 3 )]
 position = Vector2( -712, -154 )
 next_scene_name = "Level1"
+
+[node name="Door2" parent="SceneObjects/Doors" instance=ExtResource( 3 )]
+position = Vector2( -433, -154 )
+next_scene_name = "Level4"
 
 [node name="StoneGate" parent="SceneObjects" instance=ExtResource( 2 )]
 position = Vector2( -337, -367 )
